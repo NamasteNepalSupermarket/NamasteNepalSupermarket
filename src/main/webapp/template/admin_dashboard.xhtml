@@ -1,0 +1,31 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets">
+    <h:head>
+        <title>Namaste Nepal Supermarket</title>
+        <ui:include src="../sections/include_js_css.xhtml" />
+    </h:head>
+    <h:body>
+        <div id="container">
+            <ui:insert name="top_bar">
+                     <ui:include src="../sections/top_bar.xhtml" />         
+            </ui:insert>
+            <ui:insert name="left_menu">
+                       <ui:include src="../sections/left_menu.xhtml" />      
+            </ui:insert>
+            <div>
+             <ui:insert name="content">
+                <!---inserd content here-->
+            </ui:insert>
+            </div>
+            <ui:insert name="footer">
+                <ui:include src="../sections/footer.xhtml" />    
+            </ui:insert>
+            
+        </div>
+    </h:body>
+</html>
+
