@@ -46,6 +46,7 @@ public class UserBean implements Serializable{
         System.out.println("inside create");
         Category cat=new Category();
         cat.setName(category.getName());
+        cat.setDescription(category.getDescription());
         categoryFacade.create(cat);
         categoryFacade.findAll();
       // List<Category> catList= categoryFacadeLocal.findAll();
