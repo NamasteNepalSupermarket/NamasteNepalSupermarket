@@ -5,24 +5,58 @@
       xmlns:ui="http://java.sun.com/jsf/facelets">
 
     <ui:composition>
-        <ul class="nav nav-sidebar">
-            <li class="active"><a href="#">Overview</a></li>
-            <li><a href="#">Reports</a></li>
-            <li><a href="#">Analytics</a></li>
-            <li><a href="#">Export</a></li>
-        </ul>
-        <ul class="nav nav-sidebar">
-            <li><a href="">Nav item</a></li>
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-            <li><a href="">More navigation</a></li>
-        </ul>
-        <ul class="nav nav-sidebar">
-            <li><a href="">Nav item again</a></li>
-            <li><a href="">One more nav</a></li>
-            <li><a href="">Another nav item</a></li>
-        </ul>        
+        
+        
+        <nav id="column-left" class="active">
+                <div id="profile">
+                    <div>
+                        <h4>Rupak Nepali</h4>
+                        <small>Administrator</small>
+                    </div>
+                </div>
+                <ul id="menu">
+                    <li id="dashboard" class="active"><a href=""><i class="fa fa-dashboard fa-fw"></i> <span>Dashboard</span></a></li>
+                    <li id="catalog"><a class="parent"><i class="fa fa-tags fa-fw"></i> <span>Catalog</span></a>
+                        <ul class="collapse">
+                            <li><a href="#">Categories</a></li>
+                            <li><a href="#">Products</a></li>
+                            <li><a href="#">Manufacturers</a></li>
+                            <li><a href="#">Reviews</a></li>
+                            <li><a href="#">Information</a></li>
+                        </ul>
+                    </li>
+
+                    <li id="sale"><a class="parent"><i class="fa fa-shopping-cart fa-fw"></i> <span>Sales</span></a>
+                        <ul class="collapse">
+                            <li><a href="#">Orders</a></li>
+                            <li><a href="#">Customers</a></li>
+                            <li><a href="#">Send Mail to Customers</a></li>
+                        </ul>
+                    </li>
+                    <li id="system"><a class="parent"><i class="fa fa-cog fa-fw"></i> <span>System</span></a>
+                        <ul class="collapse">
+                            <li><a href="#">Settings</a></li>
+                            <li><a href="#">Banners</a></li>
+                            <li><a href="#">Users</a></li>
+                            <li><a href="#">Countries</a></li>
+                            <li><a href="#">Zones</a></li>
+                        </ul>
+                    </li>
+                    <li id="reports"><a class="parent"><i class="fa fa-bar-chart-o fa-fw"></i> <span>Reports</span></a>
+                        <ul class="collapse">
+                            <li><a class="parent">Products</a>
+                                <ul class="collapse">
+                                    <li><a href="#">Viewed</a></li>
+                                    <li><a href="#">Purchased</a></li>
+                                </ul>
+                            </li>
+
+
+                        </ul>
+                    </li>
+                </ul>
+            </nav>
+                
     </ui:composition>
 </html>
 

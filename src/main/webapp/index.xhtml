@@ -9,17 +9,10 @@
         <ui:include src="sections/include_js_css.xhtml" />
     </h:head>
     <h:body>
-        <div>
+        <div id="container">
+            <ui:include src="sections/top_bar.xhtml" />
+            <ui:include src="sections/left_menu.xhtml" />
             <div>
-                <ui:include src="sections/top_bar.xhtml" />        
-            </div>
-            <div>
-                <div class="container">
-                    <div class="row">
-                        <div class="col-sm-3 col-md-2 sidebar">
-                            <ui:include src="sections/left_menu.xhtml" />
-                        </div>
-                        <div>
                             <h1 >Sample category insert and display demo</h1> 
                             <h:form>
                                 <h:panelGrid columns="2">
@@ -40,9 +33,7 @@
                                 </h:column>
                             </h:dataTable>
                         </div>
-                    </div>
-                </div>
-            </div>
+            <ui:include src="sections/footer.xhtml" />
         </div>
     </h:body>
 </html>
