@@ -5,8 +5,13 @@
  */
 package com.cs545.waa.namastenepalsupermarket;
 
+import com.cs545.waa.namastenepalsupermarket.ejb.CategoryFacadeLocal;
+import com.cs545.waa.namastenepalsupermarket.model.Category;
 import java.io.Serializable;
-import javax.enterprise.context.SessionScoped;
+import java.util.List;
+import javax.ejb.EJB;
+import javax.ejb.TransactionAttribute;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
@@ -14,21 +19,49 @@ import javax.inject.Named;
  * @author gyanu
  */
 @Named
-@SessionScoped
+@RequestScoped
 public class UserBean implements Serializable{
-    private String name;
+    
+    @EJB
+    private CategoryFacadeLocal categoryFacade;
+    private Category category;
 
     public UserBean() {
-        setName("This is Namaste Nepal Supermarket");
+        category=new Category();
     }
 
     
-    public String getName() {
-        return name;
+    public Category getCategory() {
+        return category;
     }
 
-    public void setName(String name) {
-        this.name = name;
+    public void setCategory(Category category) {
+        this.category = category;
+    }
+
+    
+    
+    @TransactionAttribute
+    public void create(){
+        System.out.println("inside create");
+        Category cat=new Category();
+        cat.setName(category.getName());
+        categoryFacade.create(cat);
+        categoryFacade.findAll();
+      // List<Category> catList= categoryFacadeLocal.findAll();
+       // System.out.println("cat list size : "+catList.size());
+    }
+    
+    public List<Category> categoryList(){
+        return categoryFacade.findAll();
+    }
+
+    public CategoryFacadeLocal getCategoryFacade() {
+        return categoryFacade;
+    }
+
+    public void setCategoryFacade(CategoryFacadeLocal categoryFacade) {
+        this.categoryFacade = categoryFacade;
     }
     
     
