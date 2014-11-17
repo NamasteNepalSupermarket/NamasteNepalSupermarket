@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package com.cs545.waa.namastenepalsupermarket;
+package com.cs545.waa.namastenepalsupermarket.controller;
 
 import com.cs545.waa.namastenepalsupermarket.ejb.CategoryFacadeLocal;
 import com.cs545.waa.namastenepalsupermarket.model.Category;
