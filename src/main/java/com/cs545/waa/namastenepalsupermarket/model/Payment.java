@@ -5,6 +5,7 @@
  */
 package com.cs545.waa.namastenepalsupermarket.model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -14,7 +15,7 @@ import javax.persistence.Id;
  * @author Bishal Timilsina
  */
 @Entity
-class Payment {
+class Payment implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
@@ -26,19 +27,14 @@ class Payment {
     public Long getId() {
         return id;
     }
-
     public void setId(Long id) {
         this.id = id;
     }
-
     public String getMethod() {
         return method;
     }
-
     public void setMethod(String method) {
         this.method = method;
     }
-    
-    
-
+        
 }

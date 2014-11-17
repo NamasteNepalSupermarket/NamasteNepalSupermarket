@@ -5,6 +5,7 @@
  */
 package com.cs545.waa.namastenepalsupermarket.model;
 
+import java.util.ArrayList;
 import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.OneToMany;
@@ -15,19 +16,18 @@ import javax.persistence.OneToMany;
  */
 @Entity
 public class Customer extends Person{
-    //private Address address;
     
-//    @OneToMany
-//    private List<Order> orders;
-
-    public Customer() {        
+    @OneToMany(mappedBy="buyer")
+    private List<Request> orders; 
+    
+    public Customer() { 
+        orders=new ArrayList<>();
     }
-       
-//    public Address getAddress() {
-//        return address;
-//    }
-//    public void setAddress(Address address) {
-//        this.address = address;
-//    }
-        
+            
+    public List<Request> getOrders() {
+        return orders;
+    }
+    public void setOrders(List<Request> orders) {
+        this.orders = orders;
+    }            
 }

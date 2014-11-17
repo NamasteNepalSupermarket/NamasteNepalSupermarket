@@ -5,7 +5,10 @@
  */
 package com.cs545.waa.namastenepalsupermarket.model;
 
+import java.io.Serializable;
 import java.util.List;
+import java.util.Map;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -15,33 +18,33 @@ import javax.persistence.Id;
  * @author Bishal Timilsina
  */
 @Entity
-class State {
-        @Id
+class State implements Serializable{
+    @Id
     @GeneratedValue
     private Long id;
-        private String name;
-        private String correspondingCountry;
-        //private List<Integer> zipcodeStarts;
-        
-        public State() {
-        }                
+    private String name;
+    private String correspondingCountry;    
+    private Integer zipcodeStart;
 
-        public String getName() {
-            return name;
-        }
-        public void setName(String name) {
-            this.name = name;
-        }
-        public String getCorrespondingCountry() {
-            return correspondingCountry;
-        }
-        public void setCorrespondingCountry(String correspondingCountry) {
-            this.correspondingCountry = correspondingCountry;
-        }
-//        public List<Integer> getZipcodeStarts() {
-//            return zipcodeStarts;
-//        }
-//        public void setZipcodeStarts(List<Integer> zipcodeStarts) {
-//            this.zipcodeStarts = zipcodeStarts;
-//        }                
+    public State() {
+    }                
+
+    public String getName() {
+        return name;
     }
+    public void setName(String name) {
+        this.name = name;
+    }
+    public String getCorrespondingCountry() {
+        return correspondingCountry;
+    }
+    public void setCorrespondingCountry(String correspondingCountry) {
+        this.correspondingCountry = correspondingCountry;
+    }
+    public Integer getZipcodeStart() {
+        return zipcodeStart;
+    }
+    public void setZipcodeStart(Integer zipcodeStart) {
+        this.zipcodeStart = zipcodeStart;
+    }                
+}

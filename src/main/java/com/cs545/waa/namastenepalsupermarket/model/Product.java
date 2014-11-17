@@ -5,16 +5,21 @@
  */
 package com.cs545.waa.namastenepalsupermarket.model;
 
+import java.io.Serializable;
+import java.util.ArrayList;
+import java.util.List;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.ManyToMany;
+import javax.persistence.ManyToOne;
 
 /**
  *
  * @author Bishal Timilsina
  */
 @Entity
-public class Product {
+public class Product implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
@@ -25,10 +30,16 @@ public class Product {
     private String model;
     private long quantity;
     private boolean status;
+    
+    @ManyToOne
+    private Request refRequest;
+    @ManyToMany
+    private List<Category> categories;
 
     public Product() {
+        categories=new ArrayList<>();
     }
-
+    
     public Long getId() {
         return id;
     }
@@ -77,5 +88,17 @@ public class Product {
     public void setStatus(boolean status) {
         this.status = status;
     }
-            
+    public Request getRefRequest() {
+        return refRequest;
+    }
+    public void setRefRequest(Request refRequest) {
+        this.refRequest = refRequest;
+    }
+    public List<Category> getCategories() {
+        return categories;
+    }
+    public void setCategories(List<Category> categories) {
+        this.categories = categories;
+    }
+         
 }

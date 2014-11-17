@@ -5,16 +5,18 @@
  */
 package com.cs545.waa.namastenepalsupermarket.model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
  * @author Bishal Timilsina
  */
 @Entity
-class Address {
+class Address implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
@@ -24,8 +26,9 @@ class Address {
     private String address2;
     private String city;
     private String postalcode;
-    //private State state;
     private String country;
+    @OneToOne
+    private State state;    
 
     public Address() {
     }
@@ -72,16 +75,17 @@ class Address {
     public void setPostalcode(String postalcode) {
         this.postalcode = postalcode;
     }
-//    public State getState() {
-//        return state;
-//    }
-//    public void setState(State state) {
-//        this.state = state;
-//    }
+    public State getState() {
+        return state;
+    }
+    public void setState(State state) {
+        this.state = state;
+    }
     public String getCountry() {
         return country;
     }
     public void setCountry(String country) {
         this.country = country;
-    }               
+    }  
+    
 }
