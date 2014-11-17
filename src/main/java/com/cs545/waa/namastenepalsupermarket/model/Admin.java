@@ -5,6 +5,7 @@
  */
 package com.cs545.waa.namastenepalsupermarket.model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 
 /**
@@ -12,7 +13,7 @@ import javax.persistence.Entity;
  * @author Bishal Timilsina
  */
 @Entity
-public class Admin extends Person {
+public class Admin extends Person implements Serializable {
 
     public Admin() {
     }
