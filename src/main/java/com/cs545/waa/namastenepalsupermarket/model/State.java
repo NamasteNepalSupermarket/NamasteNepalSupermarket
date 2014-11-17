@@ -14,7 +14,7 @@ import javax.persistence.Id;
  * @author Bishal Timilsina
  */
 @Entity
-class State {
+public class State {
 
     @Id
     @GeneratedValue

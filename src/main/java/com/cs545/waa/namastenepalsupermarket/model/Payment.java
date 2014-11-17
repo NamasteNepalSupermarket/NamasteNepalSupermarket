@@ -14,7 +14,7 @@ import javax.persistence.Id;
  * @author Bishal Timilsina
  */
 @Entity
-class Payment {
+public class Payment {
 
     @Id
     @GeneratedValue

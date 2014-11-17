@@ -14,7 +14,7 @@ import javax.persistence.Id;
  * @author Bishal Timilsina
  */
 @Entity
-class Shipping {
+public class Shipping {
 
     @Id
     @GeneratedValue
