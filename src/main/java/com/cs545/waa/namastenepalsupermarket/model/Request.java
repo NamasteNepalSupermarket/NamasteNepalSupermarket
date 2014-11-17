@@ -17,6 +17,7 @@ import javax.persistence.Id;
  */
 @Entity
 public class Request {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -30,6 +31,7 @@ public class Request {
     public Long getId() {
         return id;
     }
+
     public void setId(Long id) {
         this.id = id;
     }
@@ -51,6 +53,5 @@ public class Request {
 //    public void setPayment(Payment payment) {
 //        this.payment = payment;
 //    }
-  
-    
+
 }

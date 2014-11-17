@@ -12,9 +12,9 @@ import javax.persistence.Entity;
  * @author Bishal Timilsina
  */
 @Entity
-public class Admin extends Person{
-        
+public class Admin extends Person {
+
     public Admin() {
     }
-    
+
 }

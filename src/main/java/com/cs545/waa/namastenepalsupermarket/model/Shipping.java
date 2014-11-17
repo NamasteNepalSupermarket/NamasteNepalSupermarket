@@ -15,6 +15,7 @@ import javax.persistence.Id;
  */
 @Entity
 class Shipping {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -38,7 +39,5 @@ class Shipping {
     public void setMethod(String method) {
         this.method = method;
     }
-    
-    
-    
+
 }
