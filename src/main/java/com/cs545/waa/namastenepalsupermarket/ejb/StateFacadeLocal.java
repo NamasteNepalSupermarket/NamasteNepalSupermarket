@@ -5,7 +5,7 @@
  */
 package com.cs545.waa.namastenepalsupermarket.ejb;
 
-import com.cs545.waa.namastenepalsupermarket.model.Category;
+import com.cs545.waa.namastenepalsupermarket.model.State;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,20 +14,20 @@ import javax.ejb.Local;
  * @author gyanu
  */
 @Local
-public interface CategoryFacadeLocal {
+public interface StateFacadeLocal {
 
-    void create(Category category);
+    void create(State state);
 
-    void edit(Category category);
+    void edit(State state);
 
-    void remove(Category category);
+    void remove(State state);
 
-    Category find(Object id);
+    State find(Object id);
 
-    List<Category> findAll();
+    List<State> findAll();
 
-    List<Category> findRange(int[] range);
+    List<State> findRange(int[] range);
 
     int count();
-
+    
 }

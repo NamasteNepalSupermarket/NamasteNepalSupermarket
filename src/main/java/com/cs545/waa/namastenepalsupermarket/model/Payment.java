@@ -15,7 +15,7 @@ import javax.persistence.Id;
  * @author Bishal Timilsina
  */
 @Entity
-class Payment implements Serializable{
+public class Payment implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
@@ -35,6 +35,5 @@ class Payment implements Serializable{
     }
     public void setMethod(String method) {
         this.method = method;
-    }
-        
+    }       
 }

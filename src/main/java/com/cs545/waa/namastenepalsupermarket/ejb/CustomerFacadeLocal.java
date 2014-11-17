@@ -5,7 +5,7 @@
  */
 package com.cs545.waa.namastenepalsupermarket.ejb;
 
-import com.cs545.waa.namastenepalsupermarket.model.Category;
+import com.cs545.waa.namastenepalsupermarket.model.Customer;
 import java.util.List;
 import javax.ejb.Local;
 
@@ -14,20 +14,20 @@ import javax.ejb.Local;
  * @author gyanu
  */
 @Local
-public interface CategoryFacadeLocal {
+public interface CustomerFacadeLocal {
 
-    void create(Category category);
+    void create(Customer customer);
 
-    void edit(Category category);
+    void edit(Customer customer);
 
-    void remove(Category category);
+    void remove(Customer customer);
 
-    Category find(Object id);
+    Customer find(Object id);
 
-    List<Category> findAll();
+    List<Customer> findAll();
 
-    List<Category> findRange(int[] range);
+    List<Customer> findRange(int[] range);
 
     int count();
-
+    
 }

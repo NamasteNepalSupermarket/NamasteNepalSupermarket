@@ -5,7 +5,7 @@
  */
 package com.cs545.waa.namastenepalsupermarket.ejb;
 
-import com.cs545.waa.namastenepalsupermarket.model.Category;
+import com.cs545.waa.namastenepalsupermarket.model.Product;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -15,8 +15,7 @@ import javax.persistence.PersistenceContext;
  * @author gyanu
  */
 @Stateless
-public class CategoryFacade extends AbstractFacade<Category> implements CategoryFacadeLocal {
-
+public class ProductFacade extends AbstractFacade<Product> implements ProductFacadeLocal {
     @PersistenceContext(unitName = "com.cs545.waa_NamasteNepalSupermarket_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -25,8 +24,8 @@ public class CategoryFacade extends AbstractFacade<Category> implements Category
         return em;
     }
 
-    public CategoryFacade() {
-        super(Category.class);
+    public ProductFacade() {
+        super(Product.class);
     }
-
+    
 }

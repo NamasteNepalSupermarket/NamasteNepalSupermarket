@@ -6,9 +6,6 @@
 package com.cs545.waa.namastenepalsupermarket.model;
 
 import java.io.Serializable;
-import java.util.List;
-import java.util.Map;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -18,7 +15,7 @@ import javax.persistence.Id;
  * @author Bishal Timilsina
  */
 @Entity
-class State implements Serializable{
+public class State implements Serializable{
     @Id
     @GeneratedValue
     private Long id;

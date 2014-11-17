@@ -15,7 +15,7 @@ import javax.persistence.Id;
  * @author Bishal Timilsina
  */
 @Entity
-class Shipping implements Serializable{
+public class Shipping implements Serializable{
     @Id
     @GeneratedValue
     private Long id;
@@ -35,5 +35,5 @@ class Shipping implements Serializable{
     }
     public void setMethod(String method) {
         this.method = method;
-    }            
+    }
 }
