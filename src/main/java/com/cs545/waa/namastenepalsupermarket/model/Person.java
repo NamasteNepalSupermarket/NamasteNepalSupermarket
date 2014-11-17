@@ -5,6 +5,7 @@
  */
 package com.cs545.waa.namastenepalsupermarket.model;
 
+import java.io.Serializable;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -16,7 +17,7 @@ import javax.persistence.Inheritance;
  */
 @Entity
 @Inheritance
-public class Person {
+public class Person implements Serializable {
 
     @Id
     @GeneratedValue
