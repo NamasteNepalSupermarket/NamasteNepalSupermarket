@@ -10,6 +10,7 @@ package com.cs545.waa.namastenepalsupermarket.model;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.OneToOne;
 
 /**
  *
@@ -23,7 +24,8 @@ public class Request {
     private Long id;
 //    private List<Product> orderDetails; 
 //    private Shipping shipping;
-//    private Payment payment;
+    @OneToOne
+    private Payment payment;
 
     public Request() {
     }

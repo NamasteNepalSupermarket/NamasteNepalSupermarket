@@ -6,9 +6,11 @@
 package com.cs545.waa.namastenepalsupermarket.model;
 
 //import com.mysql.jdbc.Clob;
+import java.io.File;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
+import javax.persistence.Transient;
 
 /**
  *
@@ -23,6 +25,10 @@ public class Category {
     private String description;
     private String image;
     private String name;
+    @Transient
+    private File image_file;
+    @Transient
+    private Long parent_category_id;
 //  private Category parentCategory;
 
     public Category() {
@@ -36,6 +42,23 @@ public class Category {
         this.id = id;
     }
 
+    public Long getParent_category_id() {
+        return parent_category_id;
+    }
+
+    public void setParent_category_id(Long parent_category_id) {
+        this.parent_category_id = parent_category_id;
+    }
+
+    public File getImage_file() {
+        return image_file;
+    }
+
+    public void setImage_file(File image_file) {
+        this.image_file = image_file;
+    }
+
+    
     public String getDescription() {
         return description;
     }

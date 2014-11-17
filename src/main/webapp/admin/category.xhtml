@@ -1,0 +1,64 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+        <ui:composition template="../template/admin_dashboard.xhtml">
+            <ui:define name="content">
+                <h1 >Manage Category</h1> 
+                <h:form enctype="multipart/form-data">
+                    <h:panelGrid columns="3">
+
+                        <h:outputText value="Category name" />
+                        <h:inputText id="category_name" value="#{adminBean.category.name}" />
+                        <h:message for="category_name" errorClass="alert alert-danger" />
+
+                        <h:outputText value="Description" />
+                        <p:inputTextarea rows="10" cols="50" completeMethod="#{adminBean.category.description}" queryDelay="750" minQueryLength="4" />
+                        <h:message for="category_description" errorClass="alert alert-danger" />
+                        <h:outputText value="Image" />
+                        <p:fileUpload id="category_image" value="#{adminBean.category.image_file}" mode="simple" />
+                        <h:message for="category_image" errorClass="alert alert-danger" />
+                        <h:outputText value="Parent Category" />
+                        <p:selectOneListbox id="advanced" value="#{adminBean.categoryList}"  var="t" filter="true" filterMatchMode="contains">
+                            <f:selectItems value="#{t.name}" var="theme" itemLabel="#{t.name}" itemValue="#{t.name}" />
+                            <p:column>
+                                <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
+                            </p:column>
+                            <p:column>
+                                <h:outputText value="#{t.name}" />
+                            </p:column>
+                        </p:selectOneListbox>
+                        &nbsp;
+                        <h:commandButton value="Create"  />       
+                    </h:panelGrid>
+                </h:form>
+                <h:outputText value="Category List" />
+                <!--TODO:wire proper list in table-->
+                <p:dataTable var="cat" value="#{adminBean.categoryList}">
+                    <p:column headerText="Id">
+                        <h:outputText value="#{cat.id}" />
+                    </p:column>
+
+                    <p:column headerText="Name">
+                        <h:outputText value="#{cat.name}" />
+                    </p:column>
+
+                    <p:column headerText="Description">
+                        <h:outputText value="#{cat.description}" />
+                    </p:column>
+                    <!--TODO :correct following values-->
+                    <p:column headerText="Parent Category">
+                        <h:outputText value="#{cat.name}" />
+                    </p:column>
+                    <p:column headerText="Image">
+                        <h:outputText value="#{cat.name}" />
+                    </p:column>
+                </p:dataTable>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>
