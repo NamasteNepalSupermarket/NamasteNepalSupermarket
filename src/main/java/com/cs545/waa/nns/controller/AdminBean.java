@@ -66,13 +66,14 @@ public class AdminBean implements Serializable {
     
     @TransactionAttribute
     public void saveCategory() {
-        
         System.out.println("inside saveCategory method");
         System.out.println("category  : " + category.toString());
         //System.out.println("filename :" + category.getImage_file());
         System.out.println("filename :" + category.getImage_file().getFileName() + " file type : " + category.getImage_file().getContentType() + " size : " + category.getImage_file().getSize());
         category.setImage(category.getImage_file().getFileName());
-        category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
+        if (category.getParent_category_id() != null) {
+            category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
+        }
         categoryFacadeLocal.create(category);
         Utility.saveImageFile(category);
     }
@@ -80,10 +81,13 @@ public class AdminBean implements Serializable {
     
     @PostConstruct
     @TransactionAttribute
-    public void init(){
-        Category cat1=new Category("This is item1 description", "desktop.jpg", "Desktop");
-         Category cat2=new Category("This is item2 description", "mobile.jpg", "Mobile");
-         categoryFacadeLocal.create(cat1);
-         categoryFacadeLocal.create(cat2);
+    public void init() {
+        if (categoryFacadeLocal.findAll().isEmpty()) {
+            Category cat1 = new Category("This is item1 description", "desktop.jpg", "Desktop");
+            Category cat2 = new Category("This is item2 description", "mobile.jpg", "Mobile");
+            categoryFacadeLocal.create(cat1);
+            categoryFacadeLocal.create(cat2);
+        }
+      
     }
 }
