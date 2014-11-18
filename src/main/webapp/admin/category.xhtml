@@ -10,54 +10,53 @@
             <ui:define name="content">
                 <h1 >Manage Category</h1> 
                 <h:form enctype="multipart/form-data">
-                    <h:panelGrid columns="3">
+                    <h:panelGrid columns="3" cellspacing="1%" cellpadding="1%" styleClass="table table-striped">
 
                         <h:outputText value="Category name" />
                         <h:inputText id="category_name" value="#{adminBean.category.name}" />
                         <h:message for="category_name" errorClass="alert alert-danger" />
 
                         <h:outputText value="Description" />
-                        <p:inputTextarea rows="10" cols="50" completeMethod="#{adminBean.category.description}" queryDelay="750" minQueryLength="4" />
+                        <p:inputTextarea rows="10" cols="50" value="#{adminBean.category.description}" queryDelay="750" minQueryLength="4" />
                         <h:message for="category_description" errorClass="alert alert-danger" />
                         <h:outputText value="Image" />
-                        <p:fileUpload id="category_image" value="#{adminBean.category.image_file}" mode="simple" />
+                        <p:fileUpload id="category_image" value="#{adminBean.category.image_file}" mode="simple" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                         <h:message for="category_image" errorClass="alert alert-danger" />
                         <h:outputText value="Parent Category" />
-                        <p:selectOneListbox id="advanced" value="#{adminBean.categoryList}"  var="t" filter="true" filterMatchMode="contains">
-                            <f:selectItems value="#{t.name}" var="theme" itemLabel="#{t.name}" itemValue="#{t.name}" />
-                            <p:column>
-                                <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
-                            </p:column>
-                            <p:column>
-                                <h:outputText value="#{t.name}" />
-                            </p:column>
+                        <p:selectOneListbox id="parent_category" value="#{adminBean.category.parent_category_id}"    filter="true" filterMatchMode="contains">
+                            <f:selectItems var="catgory" value="#{adminBean.categoryList}" itemLabel="#{catgory.name}" itemValue="#{catgory.id}" />
                         </p:selectOneListbox>
                         &nbsp;
-                        <h:commandButton value="Create"  />       
+                        &nbsp;
+                        <h:commandButton value="Create" action="#{adminBean.saveCategory()}"  /> 
+                        &nbsp;
                     </h:panelGrid>
                 </h:form>
                 <h:outputText value="Category List" />
                 <!--TODO:wire proper list in table-->
-                <p:dataTable var="cat" value="#{adminBean.categoryList}">
-                    <p:column headerText="Id">
-                        <h:outputText value="#{cat.id}" />
-                    </p:column>
+                <div class="table-responsive">
+                    <p:dataTable var="cat" value="#{adminBean.categoryList}" styleClass="table table-striped">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{cat.id}" />
+                        </p:column>
 
-                    <p:column headerText="Name">
-                        <h:outputText value="#{cat.name}" />
-                    </p:column>
+                        <p:column headerText="Name">
+                            <h:outputText value="#{cat.name}" />
+                        </p:column>
 
-                    <p:column headerText="Description">
-                        <h:outputText value="#{cat.description}" />
-                    </p:column>
-                    <!--TODO :correct following values-->
-                    <p:column headerText="Parent Category">
-                        <h:outputText value="#{cat.name}" />
-                    </p:column>
-                    <p:column headerText="Image">
-                        <h:outputText value="#{cat.name}" />
-                    </p:column>
-                </p:dataTable>
+                        <p:column headerText="Description">
+                            <h:outputText value="#{cat.description}" />
+                        </p:column>
+                        <!--TODO :correct following values-->
+                        <p:column headerText="Parent Category">
+                            <h:outputText value="#{cat.parentCategory.name}" />
+                        </p:column>
+                        <p:column headerText="Image">
+                            <h:graphicImage library="uploads/img/category" name="#{cat.image}" width="20%" />
+                            <!--<h:outputText value="#{cat.image}" />-->
+                        </p:column>
+                    </p:dataTable>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

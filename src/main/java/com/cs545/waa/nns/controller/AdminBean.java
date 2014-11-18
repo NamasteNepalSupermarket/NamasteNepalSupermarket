@@ -5,6 +5,7 @@
  */
 package com.cs545.waa.nns.controller;
 
+import com.cs544.waa.nns.util.Utility;
 import com.cs545.waa.nns.ejb.CategoryFacadeLocal;
 import com.cs545.waa.nns.model.Category;
 import com.cs545.waa.nns.model.Product;
@@ -13,7 +14,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.TransactionAttribute;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
@@ -21,13 +22,18 @@ import javax.inject.Named;
  * @author gyanu
  */
 @Named
-@SessionScoped
+@RequestScoped
 public class AdminBean implements Serializable {
 
     private Category category;
     private Product product;
     @EJB
     private CategoryFacadeLocal categoryFacadeLocal;
+
+    public AdminBean() {
+        category = new Category();
+        product = new Product();
+    }
 
     public Category getCategory() {
         return category;
@@ -57,6 +63,20 @@ public class AdminBean implements Serializable {
     public List<Category> getCategoryList() {
         return categoryFacadeLocal.findAll();
     }
+    
+    @TransactionAttribute
+    public void saveCategory() {
+        
+        System.out.println("inside saveCategory method");
+        System.out.println("category  : " + category.toString());
+        //System.out.println("filename :" + category.getImage_file());
+        System.out.println("filename :" + category.getImage_file().getFileName() + " file type : " + category.getImage_file().getContentType() + " size : " + category.getImage_file().getSize());
+        category.setImage(category.getImage_file().getFileName());
+        category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
+        categoryFacadeLocal.create(category);
+        Utility.saveImageFile(category);
+    }
+    
     
     @PostConstruct
     @TransactionAttribute

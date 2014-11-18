@@ -5,7 +5,6 @@
  */
 package com.cs545.waa.nns.model;
 
-import java.io.File;
 import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
@@ -15,6 +14,7 @@ import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -30,7 +30,7 @@ public class Category implements Serializable {
     private String image;
     private String name;
     @Transient
-    private File image_file;
+    private UploadedFile image_file;
     @Transient
     private Long parent_category_id;
     @ManyToOne
@@ -65,11 +65,11 @@ public class Category implements Serializable {
         this.parent_category_id = parent_category_id;
     }
 
-    public File getImage_file() {
+    public UploadedFile getImage_file() {
         return image_file;
     }
 
-    public void setImage_file(File image_file) {
+    public void setImage_file(UploadedFile image_file) {
         this.image_file = image_file;
     }
 
@@ -133,6 +133,6 @@ public class Category implements Serializable {
 
     @Override
     public String toString() {
-        return "com.cs545.waa.namastenepalsupermarket.model.Categor[ id=" + id + " ]";
+        return "com.cs545.waa.namastenepalsupermarket.model.Categor[ id=" + id + ", name=" + name + ",description=" + description + ",parent_cat=" + parent_category_id + " ]";
     }
 }
