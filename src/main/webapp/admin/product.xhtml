@@ -86,25 +86,20 @@
                  <h:outputText value="Category List" />
                 <!--TODO:wire proper list in table-->
                 <div class="table-responsive">
-                    <p:dataTable var="cat" value="#{adminBean.categoryList}" styleClass="table table-striped">
+                    <p:dataTable var="product" value="#{adminBean.productList}" styleClass="table table-striped">
                         <p:column headerText="Id">
-                            <h:outputText value="#{cat.id}" />
+                            <h:outputText value="#{product.id}" />
                         </p:column>
 
                         <p:column headerText="Name">
-                            <h:outputText value="#{cat.name}" />
+                            <h:outputText value="#{product.name}" />
                         </p:column>
-
-                        <p:column headerText="Description">
-                            <h:outputText value="#{cat.description}" />
+                        <p:column headerText="Quantity">
+                            <h:outputText value="#{product.quantity}" />
                         </p:column>
-                        <!--TODO :correct following values-->
-                        <p:column headerText="Parent Category">
-                            <h:outputText value="#{cat.parentCategory.name}" />
-                        </p:column>
+                        
                         <p:column headerText="Image">
-                            <h:graphicImage library="uploads/img/category" name="#{cat.image}" width="20%" />
-                            <!--<h:outputText value="#{cat.image}" />-->
+                            <h:graphicImage library="uploads/img/category" name="#{product.image}" width="20%" />
                         </p:column>
                     </p:dataTable>
                 </div>
