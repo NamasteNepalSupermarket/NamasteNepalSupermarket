@@ -82,7 +82,32 @@
                     </div>
                    
                 </h:form>
-                
+                <hr style="height: 2px; color: #333;" />
+                 <h:outputText value="Category List" />
+                <!--TODO:wire proper list in table-->
+                <div class="table-responsive">
+                    <p:dataTable var="cat" value="#{adminBean.categoryList}" styleClass="table table-striped">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{cat.id}" />
+                        </p:column>
+
+                        <p:column headerText="Name">
+                            <h:outputText value="#{cat.name}" />
+                        </p:column>
+
+                        <p:column headerText="Description">
+                            <h:outputText value="#{cat.description}" />
+                        </p:column>
+                        <!--TODO :correct following values-->
+                        <p:column headerText="Parent Category">
+                            <h:outputText value="#{cat.parentCategory.name}" />
+                        </p:column>
+                        <p:column headerText="Image">
+                            <h:graphicImage library="uploads/img/category" name="#{cat.image}" width="20%" />
+                            <!--<h:outputText value="#{cat.image}" />-->
+                        </p:column>
+                    </p:dataTable>
+                </div>
                
             </ui:define>
         </ui:composition>
