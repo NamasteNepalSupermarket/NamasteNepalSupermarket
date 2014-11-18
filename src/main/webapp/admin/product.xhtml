@@ -8,7 +8,82 @@
     <h:body>
         <ui:composition template="../template/admin_dashboard.xhtml">
             <ui:define name="content">
-                  <h1 >Manage Product</h1> 
+                <h1 >Manage Product</h1> 
+                <h:form enctype="multipart/form-data">
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Product Name: </label>
+                        <div class="col-sm-4">
+                            <h:inputText id="category_name" value="#{adminBean.product.name}"  class="form-control" />
+                            <h:message for="category_name" errorClass="alert alert-danger" />
+                        </div>
+                    </div>
+                    <div style="clear:both; height: 5px;"></div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Description: </label>
+                        <div class="col-sm-8">
+                            <p:growl id="growl" showDetail="true" />
+
+                            <p:inputTextarea style="width:80%;" completeMethod="#{adminBean.product.description}" queryDelay="750" minQueryLength="4" />
+                            <h:message for="category_description" errorClass="alert alert-danger" />
+                        </div>
+                    </div>
+
+                    <div style="clear:both; height: 5px;"></div>
+
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Quantity: </label>
+                        <div class="col-sm-4">
+                            <h:inputText id="product_quantity" value="#{adminBean.product.quantity}"  class="form-control" />
+                            <h:message for="product_quantity" errorClass="alert alert-danger" />
+                        </div>
+                    </div>
+                    
+                    <div style="clear:both; height: 5px;"></div>
+
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Price: </label>
+                        <div class="col-sm-4">
+                            <h:inputText id="product_price" value="#{adminBean.product.price}"  class="form-control" />
+                            <h:message for="product_price" errorClass="alert alert-danger" />
+                        </div>
+                    </div>
+                    
+                    <div style="clear:both; height: 5px;"></div>
+
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Model: </label>
+                        <div class="col-sm-4">
+                            <h:inputText id="product_model" value="#{adminBean.product.model}"  class="form-control" />
+                            <h:message for="product_model" errorClass="alert alert-danger" />
+                        </div>
+                    </div>
+                    <div style="clear:both; height: 5px;"></div>
+
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Model: </label>
+                        <div class="col-sm-4">
+                            
+                            <h:selectOneMenu id="subscriptions" value="#{adminBean.product.status}"  class="form-control">
+                               <f:selectItem id="item1" itemLabel="Disabled" itemValue="0" />
+                               <f:selectItem id="item2" itemLabel="Enabled" itemValue="1" />
+                           </h:selectOneMenu>
+                            
+                        </div>
+                    </div>
+                    <div style="clear:both; height: 5px;"></div>
+                    
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-name1"></label>
+                        <div class="col-sm-10">
+
+                            <h:commandLink styleClass="btn btn-primary" value="Create" action="#{adminBean.saveProduct()}" />
+
+                        </div>
+                    </div>
+                   
+                </h:form>
+                
+               
             </ui:define>
         </ui:composition>
     </h:body>
