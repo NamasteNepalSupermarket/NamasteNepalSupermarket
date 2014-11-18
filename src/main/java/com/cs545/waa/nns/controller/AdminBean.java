@@ -7,6 +7,7 @@ package com.cs545.waa.nns.controller;
 
 import com.cs544.waa.nns.util.Utility;
 import com.cs545.waa.nns.ejb.CategoryFacadeLocal;
+import com.cs545.waa.nns.ejb.ProductFacadeLocal;
 import com.cs545.waa.nns.model.Category;
 import com.cs545.waa.nns.model.Product;
 import java.io.Serializable;
@@ -29,6 +30,10 @@ public class AdminBean implements Serializable {
     private Product product;
     @EJB
     private CategoryFacadeLocal categoryFacadeLocal;
+
+    @EJB
+    private ProductFacadeLocal productFacadeLocal;
+
 
     public AdminBean() {
         category = new Category();
@@ -63,6 +68,10 @@ public class AdminBean implements Serializable {
     public List<Category> getCategoryList() {
         return categoryFacadeLocal.findAll();
     }
+
+    public List<Product> getProductList() {
+        return productFacadeLocal.findAll();
+    }
     
     @TransactionAttribute
     public void saveCategory() {
@@ -89,6 +98,21 @@ public class AdminBean implements Serializable {
             categoryFacadeLocal.create(cat2);
         }
       
+    }
+
+    public ProductFacadeLocal getProductFacadeLocal() {
+        return productFacadeLocal;
+    }
+
+    public void setProductFacadeLocal(ProductFacadeLocal productFacadeLocal) {
+        this.productFacadeLocal = productFacadeLocal;
+    }
+
+    @TransactionAttribute
+    public void saveProduct() {
+        System.out.println("inside saveProduct");
+        productFacadeLocal.create(product);
+        product = new Product();
     }
 
     public String editCategory(Category cat) {
