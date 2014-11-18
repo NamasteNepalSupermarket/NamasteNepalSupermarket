@@ -10,54 +10,86 @@
             <ui:define name="content">
                 <h1 >Manage Category</h1> 
                 <h:form enctype="multipart/form-data">
-                    <h:panelGrid columns="3">
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Category Name: </label>
+                        <div class="col-sm-4">
+                            <h:inputText id="category_name" value="#{adminBean.category.name}"  class="form-control" />
+                            <h:message for="category_name" errorClass="alert alert-danger" />
+                        </div>
+                    </div>
+                    <div style="clear:both; height: 5px;"></div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Description: </label>
+                        <div class="col-sm-8">
+                            <p:inputTextarea style="width:80%;" completeMethod="#{adminBean.category.description}" queryDelay="750" minQueryLength="4" />
+                            <h:message for="category_description" errorClass="alert alert-danger" />
+                        </div>
+                    </div>
 
-                        <h:outputText value="Category name" />
-                        <h:inputText id="category_name" value="#{adminBean.category.name}" />
-                        <h:message for="category_name" errorClass="alert alert-danger" />
+                    <div style="clear:both; height: 5px;"></div>
 
-                        <h:outputText value="Description" />
-                        <p:inputTextarea rows="10" cols="50" completeMethod="#{adminBean.category.description}" queryDelay="750" minQueryLength="4" />
-                        <h:message for="category_description" errorClass="alert alert-danger" />
-                        <h:outputText value="Image" />
-                        <p:fileUpload id="category_image" value="#{adminBean.category.image_file}" mode="simple" />
-                        <h:message for="category_image" errorClass="alert alert-danger" />
-                        <h:outputText value="Parent Category" />
-                        <p:selectOneListbox id="advanced" value="#{adminBean.categoryList}"  var="t" filter="true" filterMatchMode="contains">
-                            <f:selectItems value="#{t.name}" var="theme" itemLabel="#{t.name}" itemValue="#{t.name}" />
-                            <p:column>
-                                <h:outputText styleClass="ui-theme ui-theme-#{t.name}" />
-                            </p:column>
-                            <p:column>
-                                <h:outputText value="#{t.name}" />
-                            </p:column>
-                        </p:selectOneListbox>
-                        &nbsp;
-                        <h:commandButton value="Create"  />       
-                    </h:panelGrid>
+                     <!--<div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Image: </label>
+                        <div class="col-sm-10">
+                            <p:fileUpload id="category_image" value="{adminBean.category.image_file}" mode="simple" styleClass="btn btn-primary" />
+                            <h:message for="category_image" errorClass="alert alert-danger" />
+                        </div>
+                    </div>
+
+                    <div style="clear:both; height: 5px;"></div>
+
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Parent Category: </label>
+                        <div class="col-sm-10">
+                            <p:selectOneListbox id="advanced" value="{adminBean.categoryList}"  var="t" filter="true" filterMatchMode="contains">
+                                <f:selectItems value="{t.name}" var="theme" itemLabel="{t.name}" itemValue="{t.name}" />
+                                <p:column>
+                                    <h:outputText styleClass="ui-theme ui-theme-{t.name}" />
+                                </p:column>
+                                <p:column>
+                                    <h:outputText value="{t.name}" />
+                                </p:column>
+                            </p:selectOneListbox>   
+                        </div>
+                    </div>
+                    --> 
+                    
+                    <div style="clear:both; height: 15px;"></div>
+                    <div class="form-group">
+                        <label class="col-sm-2 control-label" for="input-name1"></label>
+                        <div class="col-sm-10">
+
+                            <h:commandLink styleClass="btn btn-primary" value="Create" action="#{adminBean.saveCategory()}" />
+
+                        </div>
+                    </div>
                 </h:form>
-                <h:outputText value="Category List" />
+                
+                <hr></hr>
+                <h1><h:outputText value="Category List" /></h1>
                 <!--TODO:wire proper list in table-->
+                <div class="table-responsive">
                 <p:dataTable var="cat" value="#{adminBean.categoryList}">
-                    <p:column headerText="Id">
-                        <h:outputText value="#{cat.id}" />
-                    </p:column>
-
-                    <p:column headerText="Name">
-                        <h:outputText value="#{cat.name}" />
-                    </p:column>
-
-                    <p:column headerText="Description">
-                        <h:outputText value="#{cat.description}" />
-                    </p:column>
-                    <!--TODO :correct following values-->
-                    <p:column headerText="Parent Category">
-                        <h:outputText value="#{cat.name}" />
-                    </p:column>
+                    
                     <p:column headerText="Image">
                         <h:outputText value="#{cat.name}" />
                     </p:column>
+                    <p:column headerText="Name">
+                        <h:outputText value="#{cat.name}" />
+                    </p:column>
+                    <p:column headerText="Edit">
+                        
+                        <h:link value="editCategory" outcome="Edit" />
+                     </p:column>
+                    
+                    <p:column headerText="Delete">
+                        <h:link value="deleteCategory" outcome="Delete" />
+                    </p:column>
+                    
+                    
+
                 </p:dataTable>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>
