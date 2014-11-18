@@ -64,6 +64,14 @@ public class AdminBean implements Serializable {
         this.categoryFacadeLocal = categoryFacadeLocal;
     }
     
+    public ProductFacadeLocal getProductFacadeLocal() {
+        return productFacadeLocal;
+    }
+
+    public void setProductFacadeLocal(ProductFacadeLocal productFacadeLocal) {
+        this.productFacadeLocal = productFacadeLocal;
+    }
+
     //TODO : parent category filtering
     public List<Category> getCategoryList() {
         return categoryFacadeLocal.findAll();
@@ -87,7 +95,18 @@ public class AdminBean implements Serializable {
         Utility.saveImageFile(category);
     }
     
-    
+    @TransactionAttribute
+    public void saveProduct() {
+        /*
+        product.setImage(product.getImage_file().getFileName());
+        if (category.getParent_category_id() != null) {
+            category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
+        }
+        */
+        productFacadeLocal.create(product);
+        //Utility.saveImageFile(category);
+    }
+
     @PostConstruct
     @TransactionAttribute
     public void init() {
@@ -97,7 +116,7 @@ public class AdminBean implements Serializable {
             categoryFacadeLocal.create(cat1);
             categoryFacadeLocal.create(cat2);
         }
-      
+
     }
 
     public ProductFacadeLocal getProductFacadeLocal() {
