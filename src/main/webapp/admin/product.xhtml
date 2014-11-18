@@ -82,7 +82,31 @@
                     </div>
                    
                 </h:form>
+<<<<<<< HEAD
                 
+=======
+                <hr style="height: 2px; color: #333;" />
+                 <h:outputText value="Category List" />
+                <!--TODO:wire proper list in table-->
+                <div class="table-responsive">
+                    <p:dataTable var="product" value="#{adminBean.productList}" styleClass="table table-striped">
+                        <p:column headerText="Id">
+                            <h:outputText value="#{product.id}" />
+                        </p:column>
+
+                        <p:column headerText="Name">
+                            <h:outputText value="#{product.name}" />
+                        </p:column>
+                        <p:column headerText="Quantity">
+                            <h:outputText value="#{product.quantity}" />
+                        </p:column>
+                        
+                        <p:column headerText="Image">
+                            <h:graphicImage library="uploads/img/category" name="#{product.image}" width="20%" />
+                        </p:column>
+                    </p:dataTable>
+                </div>
+>>>>>>> 3058763cddebb81626fb058604d75abd8659299c
                
             </ui:define>
         </ui:composition>
