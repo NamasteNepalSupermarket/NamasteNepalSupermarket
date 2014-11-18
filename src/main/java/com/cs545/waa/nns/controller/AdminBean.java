@@ -14,7 +14,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.TransactionAttribute;
-import javax.enterprise.context.RequestScoped;
+import javax.enterprise.context.SessionScoped;
 import javax.inject.Named;
 
 /**
@@ -22,7 +22,7 @@ import javax.inject.Named;
  * @author gyanu
  */
 @Named
-@RequestScoped
+@SessionScoped
 public class AdminBean implements Serializable {
 
     private Category category;
@@ -90,4 +90,17 @@ public class AdminBean implements Serializable {
         }
       
     }
+
+    public String editCategory(Category cat) {
+        System.out.println("inside editCategory");
+        category = cat;
+        return "category";
+    }
+
+    @TransactionAttribute
+    public void deleteCategory(Category cat) {
+        categoryFacadeLocal.remove(cat);
+
+    }
+
 }

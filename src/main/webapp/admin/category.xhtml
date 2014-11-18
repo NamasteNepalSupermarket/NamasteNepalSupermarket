@@ -20,7 +20,7 @@
                         <p:inputTextarea rows="10" cols="50" id="category_description" value="#{adminBean.category.description}" required="true" queryDelay="750" minQueryLength="4" />
                         <h:message for="category_description" errorClass="alert alert-danger" />
                         <h:outputText value="Image" />
-                        <p:fileUpload id="category_image" value="#{adminBean.category.image_file}" update="msg" ajax="false" invalidFileMessage="Image file type is invalid" mode="simple" required="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                        <p:fileUpload id="category_image" value="#{adminBean.category.image_file}" update="msg" invalidFileMessage="Image file type is invalid" mode="simple" required="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
                         <h:message for="category_image" errorClass="alert alert-danger" />
                         <h:outputText value="Parent Category" />
                         <p:selectOneListbox id="parent_category" value="#{adminBean.category.parent_category_id}"    filter="true" filterMatchMode="contains">
@@ -53,7 +53,10 @@
                         </p:column>
                         <p:column headerText="Image">
                             <h:graphicImage library="uploads/img/category" name="#{cat.image}" width="20%" />
-                            <!--<h:outputText value="#{cat.image}" />-->
+                        </p:column>
+                        <p:column headerText="Action">
+                            <p:commandButton  value="Edit"  action="#{adminBean.editCategory(cat)}"/>
+                            <p:commandButton  value="Delete" action="#{adminBean.deleteCategory(cat)}"/>
                         </p:column>
                     </p:dataTable>
                 </div>
