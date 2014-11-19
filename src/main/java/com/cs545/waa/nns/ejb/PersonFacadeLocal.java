@@ -29,5 +29,6 @@ public interface PersonFacadeLocal {
     List<Person> findRange(int[] range);
 
     int count();
-    
+
+  
 }

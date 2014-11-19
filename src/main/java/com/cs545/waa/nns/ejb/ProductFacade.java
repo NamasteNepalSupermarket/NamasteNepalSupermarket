@@ -5,14 +5,17 @@
  */
 package com.cs545.waa.nns.ejb;
 
-import com.cs545.waa.nns.model.Category;
 import com.cs545.waa.nns.model.Product;
+import java.util.Collection;
 import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
 import javax.persistence.criteria.CriteriaBuilder;
 import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Expression;
+import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 
 /**
@@ -34,18 +37,25 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
         super(Product.class);
     }
 
-   /* @Override
-    public List<Product> getProductByCategory(Long catId) {
-        CriteriaBuilder cb = em.getCriteriaBuilder();
-        List<Product> products = (List<Product>) cb.createQuery(Product.class);
-        Root<Product> prod = cb.from(Product.class);
-        Root<Category> cat = cb.from(Category.class);
-//        cb.select(dept)
-//                .distinct(true)
-//                .where(cb.equal(dept, emp.get("department")));
+    @Override
+    public List<Product> findProductsByCategory(int id) {
+        System.out.println("inside findProductsByCategory ");
+        CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
+        CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);
+        Root<Product> productRoot = criteriaQuery.from(Product.class);
+        Expression<Collection<String>> categoryIds = productRoot.get("categories");
+        Predicate containsFavoritedProduct = criteriaBuilder.isMember(String.valueOf(id), categoryIds);
+        criteriaQuery.where(containsFavoritedProduct);
 
-        return null;
-
-    }*/
+        //Root<Category> categoryRoot = criteriaQuery.from(Category.class);
+        
+        // criteriaQuery.select(productRoot).distinct(true).where(criteriaBuilder.equal(categoryRoot, productRoot.get("categories")));
+        TypedQuery<Product> q = em.createQuery(criteriaQuery);
+        System.out.println("query : " + criteriaQuery.toString() + ">>>" + q.toString());
+        List<Product> productList = q.getResultList();
+        System.out.println("productlist : " + productList.size()
+        );
+        return productList;
+    }
 
 }

@@ -30,6 +30,7 @@ public interface ProductFacadeLocal {
 
     int count();
     
-   // List<Product> getProductByCategory(Long catId);
+    List<Product> findProductsByCategory(int id);
+
     
 }

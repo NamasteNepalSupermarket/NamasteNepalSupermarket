@@ -11,6 +11,7 @@ import com.cs545.waa.nns.ejb.ProductFacadeLocal;
 import com.cs545.waa.nns.model.Category;
 import com.cs545.waa.nns.model.Product;
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
@@ -131,8 +132,15 @@ public class AdminBean implements Serializable {
             Category cat2 = new Category("This is item2 description", "mobile.jpg", "Mobile");
             categoryFacadeLocal.create(cat1);
             categoryFacadeLocal.create(cat2);
+            List<Category> catlist = new ArrayList<>();
+            catlist.add(cat1);
+            catlist.add(cat2);
+            Product product = new Product("mobile", "This is samsung galaxy s", 100, "s5", 20, true, catlist);
+            productFacadeLocal.create(product);
+            product = new Product("mobile", "This is samsung galaxy s4", 20, "s4", 5, true, catlist);
+            productFacadeLocal.create(product);
         }
-      
+     
     }
 
     @TransactionAttribute
@@ -145,6 +153,12 @@ public class AdminBean implements Serializable {
     public void editCategory(long catId) {
         System.out.println("inside delete Category : " + catId);
         category = categoryFacadeLocal.find(catId);
+    }
+
+    @TransactionAttribute
+    public List<Product> getProductsByCategory(int catId) {
+        System.out.println("inside get product list for category : " + catId);
+        return productFacadeLocal.findProductsByCategory(catId);
     }
 
 }

@@ -39,7 +39,17 @@ public class Product implements Serializable{
     public Product() {
         categories=new ArrayList<>();
     }
-    
+
+    public Product(String name, String description, double price, String model, long quantity, boolean status, List<Category> categories) {
+        this.name = name;
+        this.description = description;
+        this.price = price;
+        this.model = model;
+        this.quantity = quantity;
+        this.status = status;
+        this.categories = categories;
+    }
+
     public Long getId() {
         return id;
     }

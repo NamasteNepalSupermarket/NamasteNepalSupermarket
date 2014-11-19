@@ -102,6 +102,13 @@
                                     
                                     </div>
                                 </div>		  	</div>
+                            <div class="col-sm-3 col-xs-6">
+                                <p>product list</p>
+                                <h:dataTable value="#{adminBean.getProductsByCategory(1)}" var="prod">
+                                    <h:column>#{prod.name}</h:column>
+                                    <h:column>#{prod.description}</h:column>
+                                </h:dataTable>
+                            </div>
                         </div>
                         </div>
                     </div>
