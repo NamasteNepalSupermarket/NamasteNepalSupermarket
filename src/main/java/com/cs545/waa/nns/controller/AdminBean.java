@@ -15,7 +15,7 @@ import java.util.List;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.TransactionAttribute;
-import javax.enterprise.context.SessionScoped;
+import javax.enterprise.context.RequestScoped;
 import javax.inject.Named;
 
 /**
@@ -23,7 +23,7 @@ import javax.inject.Named;
  * @author gyanu
  */
 @Named
-@SessionScoped
+@RequestScoped
 public class AdminBean implements Serializable {
 
     private Category category;
@@ -92,12 +92,18 @@ public class AdminBean implements Serializable {
         System.out.println("category  : " + category.toString());
         //System.out.println("filename :" + category.getImage_file());
         System.out.println("filename :" + category.getImage_file().getFileName() + " file type : " + category.getImage_file().getContentType() + " size : " + category.getImage_file().getSize());
-        category.setImage(category.getImage_file().getFileName());
-        if (category.getParent_category_id() != null) {
-            category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
+        if (category.getId() == null) {
+            //save operation
+            category.setImage(category.getImage_file().getFileName());
+            if (category.getParent_category_id() != null) {
+                category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
+            }
+            categoryFacadeLocal.create(category);
+            Utility.saveImageFile(category);
+        } else {
+            //edit operation
         }
-        categoryFacadeLocal.create(category);
-        Utility.saveImageFile(category);
+
     }
     
     @TransactionAttribute
@@ -121,19 +127,13 @@ public class AdminBean implements Serializable {
             categoryFacadeLocal.create(cat1);
             categoryFacadeLocal.create(cat2);
         }
-
-    }
-
-    public String editCategory(Category cat){
-        System.out.println("inside editCategory");
-        category = cat;
-        return "category";
+      
     }
 
     @TransactionAttribute
-    public void deleteCategory(Category cat) {
-        categoryFacadeLocal.remove(cat);
-
+    public void deleteCategory(long catId) {
+        System.out.println("inside delete Category : " + catId);
+        categoryFacadeLocal.remove(categoryFacadeLocal.find(catId));
     }
 
 }
