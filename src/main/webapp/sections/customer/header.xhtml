@@ -1,8 +1,12 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+  
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition>
         <header>
             <div class="background-header"></div>
@@ -86,21 +90,11 @@
                                         <div class="container">
                                             <ul class="megamenu slide">
                                                 <li class="home"><a href="#"><i class="fa fa-home"></i></a></li>
-
-
-                                                <li>
-                                                    <a href="#"><span><strong>Tablets</strong></span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span><strong>Software</strong></span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span><strong>Phones &amp; PDAs</strong></span></a>
-                                                </li>
-                                                <li>
-                                                    <a href="#"><span><strong>Cameras</strong></span></a>
-                                                </li>
-
+                                               
+                                                <c:forEach items="#{adminBean.onlyFourCategoryList}" var="category">
+                                                <li><a href="#"><span><strong><h:outputText value="#{category.name}"/></strong></span></a></li>
+                                                </c:forEach>
+                                               
                                             </ul>
                                         </div>
                                     </div>
