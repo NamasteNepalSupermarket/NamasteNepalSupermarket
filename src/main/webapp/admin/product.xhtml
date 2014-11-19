@@ -83,8 +83,52 @@
                    
                 </h:form>
                 <hr style="height: 2px; color: #333;" />
-                 <h:outputText value="Category List" />
-                <!--TODO:wire proper list in table-->
+                 <h:outputText value="Product List" />
+                 
+                 
+                 
+                  <h:outputText value="Category List" />
+                    <!--TODO:wire proper list in table-->
+                    <div id="cat_list" class="table-responsive">
+                        <p:dataTable var="cat" value="#{adminBean.categoryList}" styleClass="table table-striped">
+                            <p:column headerText="Id">
+                                <h:outputText value="#{cat.id}" />
+                            </p:column>
+
+                            <p:column headerText="Name">
+                                <h:outputText value="#{cat.name}" />
+                            </p:column>
+
+                            <p:column headerText="Description">
+                                <h:outputText value="#{cat.description}" />
+                            </p:column>
+                            <!--TODO :correct following values-->
+                            <p:column headerText="Parent Category">
+                                <h:outputText value="#{cat.parentCategory.name}" />
+                            </p:column>
+                            <p:column headerText="Image">
+                                <h:graphicImage library="uploads/img/category" name="#{cat.image}" width="20%" />
+                            </p:column>
+                            <p:column headerText="Action">
+                                <div class="row">
+                                    <div style="padding-left: 20%;" class="pull-left">
+                                        <h:form>
+                                            <h:commandButton action="#{adminBean.editCategory(cat.id)}" class="btn btn-default  fa  fa-edit" value="Edit" immediate="true"/>
+                                        </h:form>
+                                    </div>
+                                    <div>
+                                        <h:form>
+                                            <h:commandButton action="#{adminBean.deleteCategory(cat.id)}" class="btn btn-default  fa  fa-edit" value="Delete" immediate="true"/>
+                                        </h:form>     
+                                    </div> 
+                                </div>
+                            </p:column>
+                        </p:dataTable>
+                    </div>   
+                 
+                 
+                 
+                 
                 <div class="table-responsive">
                     <p:dataTable var="product" value="#{adminBean.productList}" styleClass="table table-striped">
                         <p:column headerText="Id">

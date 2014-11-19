@@ -24,7 +24,6 @@ import javax.persistence.criteria.Root;
  */
 @Stateless
 public class ProductFacade extends AbstractFacade<Product> implements ProductFacadeLocal {
-
     @PersistenceContext(unitName = "com.cs545.waa_NamasteNepalSupermarket_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 

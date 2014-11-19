@@ -4,28 +4,18 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets">
-    <h:body>
+    <h:body>        
         <ui:composition template="../template/admin_dashboard.xhtml">
             <ui:define name="content">
-                <h1 >Sample category insert and display demo</h1> 
-                <h:form>
-                    <h:panelGrid columns="2">
-                        <h:outputText value="Category name" />
-                        <h:inputText value="#{userBean.category.name}" />
-                        <h:commandButton value="Create" action="#{userBean.create()}" />       
-                    </h:panelGrid>
-                </h:form>
-                <h:outputText value="Category List" />
-                <h:dataTable var="cat" value="#{userBean.categoryList()}">
-                    <h:column>
-                        <f:facet name="header">Id</f:facet>
-                            #{cat.id}      
-                    </h:column>
-                    <h:column>
-                        <f:facet name="header">Name</f:facet>
-                            #{cat.name}
-                    </h:column>
-                </h:dataTable>
+                <div style="text-align: center;">
+                <img src="../resources/images/logo.png" />
+                </div>
+                <div class="pull-right" style="padding:15px">
+                <h1>By:</h1>
+                <h2>Bishal Timilsana</h2>
+                <h2>Gyanu Maharjan</h2>
+                <h2>Rupak Nepali</h2>
+                </div>
             </ui:define>
         </ui:composition>
     </h:body>

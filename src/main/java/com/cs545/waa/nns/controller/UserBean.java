@@ -63,5 +63,5 @@ public class UserBean implements Serializable{
 
     public void setCategoryFacade(CategoryFacadeLocal categoryFacade) {
         this.categoryFacade = categoryFacade;
-    }        
+    }               
 }
