@@ -90,11 +90,11 @@
                                         <div class="container">
                                             <ul class="megamenu slide">
                                                 <li class="home"><a href="#"><i class="fa fa-home"></i></a></li>
-                                               
-                                                <c:forEach items="#{adminBean.onlyFourCategoryList}" var="category">
-                                                <li><a href="#"><span><strong><h:outputText value="#{category.name}"/></strong></span></a></li>
+                                                <h:form>
+                                                    <c:forEach items="#{adminBean.onlyFourCategoryList}" var="category">
+                                                        <li><h:commandLink  value="#{category.name}" action="#{adminBean.getProductsByCategory(category.id)}"  /></li>
                                                 </c:forEach>
-                                               
+                                                </h:form>
                                             </ul>
                                         </div>
                                     </div>
