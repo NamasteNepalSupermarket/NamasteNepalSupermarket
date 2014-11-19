@@ -2,9 +2,9 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
     <ui:composition>
-
         <header id="header" class="navbar navbar-static-top">
             <div class="navbar-header">
                 <a class="pull-left">
@@ -18,10 +18,13 @@
                         <li class="divider"></li>
                         <li><a href="#" target="_blank">Support Forum</a></li>
                     </ul>
-                </li>
-                <li><a href="#"><span class="hidden-xs hidden-sm hidden-md">Logout</span> <i class="fa fa-sign-out fa-lg"></i></a></li>
+                </li>            
+            <li><h:form>
+                    <h:commandLink action="#{adminBean.flush}" value="#{adminBean.authStr}" class="hidden-xs hidden-sm hidden-md fa fa-sign-out fa-lg">                        
+                    </h:commandLink>
+                </h:form>
+            </li>
             </ul>
         </header>
     </ui:composition>
 </html>
-

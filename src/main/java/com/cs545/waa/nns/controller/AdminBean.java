@@ -5,17 +5,26 @@
  */
 package com.cs545.waa.nns.controller;
 
+import com.cs544.waa.nns.util.MD5encrypt;
 import com.cs544.waa.nns.util.Utility;
+import com.cs545.waa.nns.ejb.AdminFacadeLocal;
 import com.cs545.waa.nns.ejb.CategoryFacadeLocal;
 import com.cs545.waa.nns.ejb.ProductFacadeLocal;
+import com.cs545.waa.nns.model.Admin;
 import com.cs545.waa.nns.model.Category;
 import com.cs545.waa.nns.model.Product;
 import java.io.Serializable;
+import java.security.NoSuchAlgorithmException;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
 import javax.ejb.TransactionAttribute;
 import javax.enterprise.context.SessionScoped;
+import javax.faces.application.ConfigurableNavigationHandler;
+import javax.faces.context.FacesContext;
+import javax.faces.event.ComponentSystemEvent;
 import javax.inject.Named;
 
 /**
@@ -25,21 +34,49 @@ import javax.inject.Named;
 @Named
 @SessionScoped
 public class AdminBean implements Serializable {
-
+    private Admin admin;
     private Category category;
     private Product product;
+    private String authStr="Log In";
     @EJB
     private CategoryFacadeLocal categoryFacadeLocal;
 
     @EJB
     private ProductFacadeLocal productFacadeLocal;
 
+    @EJB
+    private AdminFacadeLocal adminFacadeLocal;
 
+    public String getAuthStr() {
+        return authStr;
+    }
+
+    public void setAuthStr(String authStr) {
+        this.authStr = authStr;
+    }
+        
     public AdminBean() {
         category = new Category();
         product = new Product();
+        admin=new Admin();
     }
 
+    public Admin getAdmin() {
+        return admin;
+    }
+
+    public void setAdmin(Admin admin) {
+        this.admin = admin;
+    }
+
+    public AdminFacadeLocal getAdminFacadeLocal() {
+        return adminFacadeLocal;
+    }
+
+    public void setAdminFacadeLocal(AdminFacadeLocal adminFacadeLocal) {
+        this.adminFacadeLocal = adminFacadeLocal;
+    }
+             
     public Category getCategory() {
         return category;
     }
@@ -71,6 +108,10 @@ public class AdminBean implements Serializable {
 
     public List<Product> getProductList() {
         return productFacadeLocal.findAll();
+    }
+    
+    public List<Admin> getAdminList(){
+        return adminFacadeLocal.findAll();
     }
     
     @TransactionAttribute
@@ -124,7 +165,58 @@ public class AdminBean implements Serializable {
     @TransactionAttribute
     public void deleteCategory(Category cat) {
         categoryFacadeLocal.remove(cat);
+        
+    }
+    
+    public void checkLogIn(ComponentSystemEvent event) {     
+     if(isInvalid()){
+        FacesContext context = FacesContext.getCurrentInstance();
+        ConfigurableNavigationHandler handler = (ConfigurableNavigationHandler) context.getApplication().getNavigationHandler();
+        handler.performNavigation("login");
+     }
+    } 
 
+    public String showInxPage(){
+        String nextPage="index";
+        if(isInvalid())
+            nextPage="login";
+        return nextPage;
     }
 
+    private boolean isInvalid(){        
+        System.out.println(admin.getUsername());
+        if(admin.getPassword()!=null){
+            try {
+                System.out.println(MD5encrypt.getCipher(admin.getPassword()));
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(AdminBean.class.getName()).log(Level.SEVERE, null, ex);
+            }
+        }
+        boolean invalid=true;
+        if(admin.getUsername()!=null && admin.getPassword()!=null){
+            for(Admin a:getAdminList()){
+                try {
+                    System.out.println(a.getUsername()+":"+a.getPassword());
+                    if(admin.getUsername().equals(a.getUsername()) && MD5encrypt.getCipher(admin.getPassword()).equals(a.getPassword())){
+                        authStr="Log Out";
+                        invalid=false;
+                        break;                
+                    }
+                } catch (NoSuchAlgorithmException ex) {
+                    Logger.getLogger(AdminBean.class.getName()).log(Level.SEVERE, null, ex);
+                }
+            }
+        }
+        //return (admin.getPassword()==null);
+        return invalid;
+    }
+    
+    public String flush(){
+        if(authStr.equals("Log Out")){
+            admin.setUsername("");
+            admin.setPassword("");
+            authStr="Log In";
+        }
+        return "login";
+    }
 }
