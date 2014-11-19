@@ -86,6 +86,11 @@ public class AdminBean implements Serializable {
         return productFacadeLocal.findRange(range);
     }
     
+    public List<Category> getOnlyFourCategoryList() {
+        int[] range=new int[]{0,7};
+        return categoryFacadeLocal.findRange(range);
+    }
+    
     @TransactionAttribute
     public void saveCategory() {
         System.out.println("inside saveCategory method");
