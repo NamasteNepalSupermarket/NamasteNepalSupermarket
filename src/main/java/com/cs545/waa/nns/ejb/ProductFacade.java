@@ -5,10 +5,15 @@
  */
 package com.cs545.waa.nns.ejb;
 
+import com.cs545.waa.nns.model.Category;
 import com.cs545.waa.nns.model.Product;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
+import javax.persistence.criteria.Root;
 
 /**
  *
@@ -16,6 +21,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ProductFacade extends AbstractFacade<Product> implements ProductFacadeLocal {
+
     @PersistenceContext(unitName = "com.cs545.waa_NamasteNepalSupermarket_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -27,5 +33,19 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
     public ProductFacade() {
         super(Product.class);
     }
-    
+
+   /* @Override
+    public List<Product> getProductByCategory(Long catId) {
+        CriteriaBuilder cb = em.getCriteriaBuilder();
+        List<Product> products = (List<Product>) cb.createQuery(Product.class);
+        Root<Product> prod = cb.from(Product.class);
+        Root<Category> cat = cb.from(Category.class);
+//        cb.select(dept)
+//                .distinct(true)
+//                .where(cb.equal(dept, emp.get("department")));
+
+        return null;
+
+    }*/
+
 }

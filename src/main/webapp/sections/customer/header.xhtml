@@ -1,11 +1,113 @@
 <?xml version='1.0' encoding='UTF-8' ?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
-      xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+  
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition>
+        <header>
+            <div class="background-header"></div>
+            <div class="slider-header">
+                <!-- Top Bar -->
+                <div id="top-bar" class="full-width">
+                    <div class="background-top-bar"></div>
+                    <div class="background">
+                        <div class="shadow"></div>
+                        <div class="pattern">
+                            <div class="container">
+                                <div class="row">
+                                    <!-- Top Bar Left -->
+                                    <div class="col-sm-4 hidden-xs">
+                                        <!-- Welcome text -->
+                                        <div class="welcome-text">
+                                            Call us: +48 500-312-312										</div>
+                                    </div>
 
-       
+                                    <!-- Top Bar Right -->
+                                    <!-- Header Right -->
+                                    <div class="col-sm-8" id="top-bar-right">
+
+                                        <!-- Links -->
+                                        <ul class="header-links">
+                                            <li><a href="#" id="wishlist-total">Wish List</a></li>
+                                            <li><a href="#">MY ACCOUNT</a></li>
+                                            <li><a href="#">CHECKOUT</a></li>
+                                        </ul>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Top of pages -->
+                <div id="top" class="full-width">
+                    <div class="background-top"></div>
+                    <div class="background">
+                        <div class="shadow"></div>
+                        <div class="pattern">
+                            <div class="container">
+                                <div class="row">
+                                    <!-- Header Left -->
+                                    <div class="col-sm-4" id="header-left">
+                                        <!-- Logo -->
+                                        <div class="logo"><a href="#"><h:graphicImage value="#{resource['images/logo.png']}" style="height:80px;"/></a></div>
+                                    </div>
+
+                                    <!-- Header Right -->
+                                    <div class="col-sm-4" id="header-center">
+                                        <!-- Search -->
+                                        <div class="search_form">
+                                            <div class="button-search"></div>
+                                            <span role="status" aria-live="polite" class="ui-helper-hidden-accessible"></span><input type="text" class="input-block-level search-query ui-autocomplete-input" name="search" placeholder="SEARCH..." id="search_query" value="" autocomplete="off" />
+
+                                            <div id="autocomplete-results" class="autocomplete-results"><ul class="ui-autocomplete ui-front ui-menu ui-widget ui-widget-content ui-corner-all" id="ui-id-1" tabindex="0" style="display: none;"></ul></div>
+
+                                        </div>
+                                    </div>
+
+
+                                </div>
+                            </div>
+
+                            <div class="container-megamenu container horizontal">
+                                <div id="megaMenuToggle">
+                                    <div class="megamenuToogle-wrapper">
+                                        <div class="megamenuToogle-pattern">
+                                            <div class="container">
+                                                <div><span></span><span></span><span></span></div>
+                                                Navigation
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+
+                                <div class="megamenu-wrapper">
+                                    <div class="megamenu-pattern">
+                                        <div class="container">
+                                            <ul class="megamenu slide">
+                                                <li class="home"><a href="#"><i class="fa fa-home"></i></a></li>
+                                                <h:form>
+                                                    <c:forEach items="#{adminBean.onlyFourCategoryList}" var="category">
+                                                        <li><h:commandLink  value="#{category.name}" action="#{adminBean.getProductsByCategory(category.id)}"  /></li>
+                                                </c:forEach>
+                                                </h:form>
+                                            </ul>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+
+            </div>
+
+
+        </header>
+
     </ui:composition>
 </html>
-

@@ -47,6 +47,8 @@ public class Category implements Serializable {
         this.name = name;
         products=new ArrayList<>();
     }
+    
+    
 
     
     public Long getId() {

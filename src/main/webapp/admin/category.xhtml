@@ -9,57 +9,73 @@
         <ui:composition template="../template/admin_dashboard.xhtml">
             <ui:define name="content">
                 <h1 >Manage Category</h1> 
-                <h:form enctype="multipart/form-data">
-                    <h:panelGrid columns="3" cellspacing="1%" cellpadding="1%" styleClass="table table-striped">
+                <div id="frm">
+                    <h:form enctype="multipart/form-data" id="form">
+                        <h:panelGrid columns="3" cellspacing="1%" cellpadding="1%" styleClass="table table-striped">
 
-                        <h:outputText value="Category name" />
-                        <h:inputText id="category_name" value="#{adminBean.category.name}"  required="true"/>
-                        <h:message for="category_name" errorClass="alert alert-danger" />
+                            <h:outputText value="Category name" />
+                            <h:inputText id="category_name" value="#{adminBean.category.name}" />
+                            <h:message for="category_name" errorClass="alert alert-danger" />
 
-                        <h:outputText value="Description" />
-                        <p:inputTextarea rows="10" cols="50" id="category_description" value="#{adminBean.category.description}" required="true" queryDelay="750" minQueryLength="4" />
-                        <h:message for="category_description" errorClass="alert alert-danger" />
-                        <h:outputText value="Image" />
-                        <p:fileUpload id="category_image" value="#{adminBean.category.image_file}" update="msg" invalidFileMessage="Image file type is invalid" mode="simple" required="true" allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                        <h:message for="category_image" errorClass="alert alert-danger" />
-                        <h:outputText value="Parent Category" />
-                        <p:selectOneListbox id="parent_category" value="#{adminBean.category.parent_category_id}"    filter="true" filterMatchMode="contains">
-                            <f:selectItems var="catgory" value="#{adminBean.categoryList}" itemLabel="#{catgory.name}" itemValue="#{catgory.id}" />
-                        </p:selectOneListbox>
-                        &nbsp;
-                        &nbsp;
-                        <h:commandButton value="Create" action="#{adminBean.saveCategory()}"  /> 
-                        &nbsp;
-                    </h:panelGrid>
-                </h:form>
-                <h:outputText value="Category List" />
-                <!--TODO:wire proper list in table-->
-                <div class="table-responsive">
-                    <p:dataTable var="cat" value="#{adminBean.categoryList}" styleClass="table table-striped">
-                        <p:column headerText="Id">
-                            <h:outputText value="#{cat.id}" />
-                        </p:column>
+                            <h:outputText value="Description" />
+                            <p:inputTextarea rows="10" cols="50" id="category_description" value="#{adminBean.category.description}" queryDelay="750" minQueryLength="4" />
+                            <h:message for="category_description" errorClass="alert alert-danger" />
+                            <h:outputText value="Image" />
+                            <h:panelGroup>
+                                <p:fileUpload id="category_image" value="#{adminBean.category.image_file}" update="msg" invalidFileMessage="Image file type is invalid" mode="simple"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                                <h:graphicImage library="uploads/img/category" name="#{adminBean.category.image}" width="20%" />     
+                            </h:panelGroup>
+                            <h:message for="category_image" errorClass="alert alert-danger" />
+                            <h:outputText value="Parent Category" />
+                            <p:selectOneListbox id="parent_category" value="#{adminBean.category.parent_category_id}" style="height:100px"   filter="true" filterMatchMode="contains">
+                                <f:selectItems var="catgory" value="#{adminBean.categoryList}" itemLabel="#{catgory.name}"  itemValue="#{catgory.id}" />
+                            </p:selectOneListbox>
+                            &nbsp;
+                            &nbsp;
+                            <h:commandButton value="Create" action="#{adminBean.saveCategory()}"  /> 
+                            &nbsp;
+                        </h:panelGrid>
+                    </h:form>
+                    <h:outputText value="Category List" />
+                    <!--TODO:wire proper list in table-->
+                    <div id="cat_list" class="table-responsive">
+                        <p:dataTable var="cat" value="#{adminBean.categoryList}" styleClass="table table-striped">
+                            <p:column headerText="Id">
+                                <h:outputText value="#{cat.id}" />
+                            </p:column>
 
-                        <p:column headerText="Name">
-                            <h:outputText value="#{cat.name}" />
-                        </p:column>
+                            <p:column headerText="Name">
+                                <h:outputText value="#{cat.name}" />
+                            </p:column>
 
-                        <p:column headerText="Description">
-                            <h:outputText value="#{cat.description}" />
-                        </p:column>
-                        <!--TODO :correct following values-->
-                        <p:column headerText="Parent Category">
-                            <h:outputText value="#{cat.parentCategory.name}" />
-                        </p:column>
-                        <p:column headerText="Image">
-                            <h:graphicImage library="uploads/img/category" name="#{cat.image}" width="20%" />
-                        </p:column>
-                        <p:column headerText="Action">
-                            <p:commandButton  value="Edit"  action="#{adminBean.editCategory(cat)}"/>
-                            <p:commandButton  value="Delete" action="#{adminBean.deleteCategory(cat)}"/>
-                        </p:column>
-                    </p:dataTable>
+                            <p:column headerText="Description">
+                                <h:outputText value="#{cat.description}" />
+                            </p:column>
+                            <!--TODO :correct following values-->
+                            <p:column headerText="Parent Category">
+                                <h:outputText value="#{cat.parentCategory.name}" />
+                            </p:column>
+                            <p:column headerText="Image">
+                                <h:graphicImage library="uploads/img/category" name="#{cat.image}" width="20%" />
+                            </p:column>
+                            <p:column headerText="Action">
+                                <div class="row">
+                                    <div style="padding-left: 20%;" class="pull-left">
+                                        <h:form>
+                                            <h:commandButton action="#{adminBean.editCategory(cat.id)}" class="btn btn-default  fa  fa-edit" value="Edit" immediate="true"/>
+                                        </h:form>
+                                    </div>
+                                    <div>
+                                        <h:form>
+                                            <h:commandButton action="#{adminBean.deleteCategory(cat.id)}" class="btn btn-default  fa  fa-edit" value="Delete" immediate="true"/>
+                                        </h:form>     
+                                    </div> 
+                                </div>
+                            </p:column>
+                        </p:dataTable>
+                    </div>   
                 </div>
+
             </ui:define>
         </ui:composition>
     </h:body>
