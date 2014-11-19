@@ -81,6 +81,11 @@ public class AdminBean implements Serializable {
         return productFacadeLocal.findAll();
     }
     
+    public List<Product> getOnlyFourProductList() {
+        int[] range=new int[]{0,4};
+        return productFacadeLocal.findRange(range);
+    }
+    
     @TransactionAttribute
     public void saveCategory() {
         System.out.println("inside saveCategory method");
@@ -119,22 +124,7 @@ public class AdminBean implements Serializable {
 
     }
 
-    public ProductFacadeLocal getProductFacadeLocal() {
-        return productFacadeLocal;
-    }
-
-    public void setProductFacadeLocal(ProductFacadeLocal productFacadeLocal) {
-        this.productFacadeLocal = productFacadeLocal;
-    }
-
-    @TransactionAttribute
-    public void saveProduct() {
-        System.out.println("inside saveProduct");
-        productFacadeLocal.create(product);
-        product = new Product();
-    }
-
-    public String editCategory(Category cat) {
+    public String editCategory(Category cat){
         System.out.println("inside editCategory");
         category = cat;
         return "category";

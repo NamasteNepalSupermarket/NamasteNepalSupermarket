@@ -40,31 +40,13 @@
                                         <div class="active item">
                                             <div class="product-grid">
                                                 <div class="row">	    				    			
+                                                    <h:dataTable value="#{adminBean.onlyFourProductList}" var="prod" >
+                                                        <h:column>
+                                                            #{prod.name}
+                                                        </h:column>
                                                     
-                                                <p:dataTable var="product" value="#{adminBean.productList}" styleClass="table table-striped">
-                                                    <div class="col-sm-3 col-xs-6">
-                                                        <!-- Product -->
-                                                        <div class="product clearfix product-hover">
-                                                            <div class="left">
-
-                                                                <div class="image ">
-
-                                                                    <a href="#">
-
-                                                                        <img src="#{resource['images/sale.jpg']}" alt="MacBook" />
-                                                                    </a>
-                                                                </div>
-                                                            </div>
-                                                            <div class="right">
-                                                                <div class="name"><a href="#">MacBook</a></div>
-                                                                <div class="price">
-                                                                    $500.00					</div>
-                                                                
-                                                            </div>
-                                                        </div>	    			
-                                                    </div>
-                                                        
-                                                </p:dataTable>
+                                                    </h:dataTable>
+                                               
                                                     
                                                 </div></div></div>
 
