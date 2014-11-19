@@ -8,81 +8,49 @@
     <h:body>
        <ui:composition template="../template/admin_dashboard.xhtml">
             <ui:define name="content">
-<<<<<<< HEAD
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://java.sun.com/jsf/core"
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+       <ui:composition template="../template/admin_dashboard.xhtml">
+            <ui:define name="content">
+
 =======
                   
->>>>>>> 899c1b65592ee1fa85e9440f78264891aae5a18e
+                  
                 <h1 >Manage User</h1> 
                 <h:form enctype="multipart/form-data">
                     <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Full Name: </label>
                         <div class="col-sm-4">
-<<<<<<< HEAD
                             <h:inputText id="category_name" value="#{adminBean.product.name}"  class="form-control" />
                             <h:message for="category_name" errorClass="alert alert-danger" />
 =======
                             <h:inputText id="user_fullname" value="#{adminBean.person.fullname}"  class="form-control" />
                             <h:message for="user_fullname" errorClass="alert alert-danger" />
->>>>>>> 899c1b65592ee1fa85e9440f78264891aae5a18e
-                        </div>
-                    </div>
-                    <div style="clear:both; height: 5px;"></div>
-                    <div class="form-group required">
-<<<<<<< HEAD
-                        <label class="col-sm-2 control-label" for="input-name1">Description: </label>
-                        <div class="col-sm-8">
-                            <p:growl id="growl" showDetail="true" />
+      xmlns:p="http://primefaces.org/ui">
+      xmlns:p="http://primefaces.org/ui">
+    <h:body>
+       <ui:composition template="../template/admin_dashboard.xhtml">
+            <ui:define name="content">
 
-                            <p:inputTextarea style="width:80%;" completeMethod="#{adminBean.product.description}" queryDelay="750" minQueryLength="4" />
-                            <h:message for="category_description" errorClass="alert alert-danger" />
-                        </div>
-                    </div>
-
-                    <div style="clear:both; height: 5px;"></div>
-
-                    <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-name1">Quantity: </label>
-                        <div class="col-sm-4">
-                            <h:inputText id="product_quantity" value="#{adminBean.product.quantity}"  class="form-control" />
-                            <h:message for="product_quantity" errorClass="alert alert-danger" />
-                        </div>
-                    </div>
-                    
-                    <div style="clear:both; height: 5px;"></div>
-
-                    <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-name1">Price: </label>
-                        <div class="col-sm-4">
-                            <h:inputText id="product_price" value="#{adminBean.product.price}"  class="form-control" />
-                            <h:message for="product_price" errorClass="alert alert-danger" />
-                        </div>
-                    </div>
-                    
-                    <div style="clear:both; height: 5px;"></div>
-
-                    <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-name1">Model: </label>
-                        <div class="col-sm-4">
-                            <h:inputText id="product_model" value="#{adminBean.product.model}"  class="form-control" />
-                            <h:message for="product_model" errorClass="alert alert-danger" />
-                        </div>
-                    </div>
-                    <div style="clear:both; height: 5px;"></div>
-
-                    <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-name1">Model: </label>
-                        <div class="col-sm-4">
-                            
-                            <h:selectOneMenu id="subscriptions" value="#{adminBean.product.status}"  class="form-control">
-                               <f:selectItem id="item1" itemLabel="Disabled" itemValue="0" />
-                               <f:selectItem id="item2" itemLabel="Enabled" itemValue="1" />
-                           </h:selectOneMenu>
-                            
-                        </div>
-                    </div>
-                    <div style="clear:both; height: 5px;"></div>
-                    
 =======
+                  
+                  
+                <h1 >Manage User</h1> 
+                <h:form enctype="multipart/form-data">
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Full Name: </label>
+                        <div class="col-sm-4">
+                            <h:inputText id="category_name" value="#{adminBean.product.name}"  class="form-control" />
+                            <h:message for="category_name" errorClass="alert alert-danger" />
+=======
+                            <h:inputText id="user_fullname" value="#{adminBean.person.fullname}"  class="form-control" />
+                            <h:message for="user_fullname" errorClass="alert alert-danger" />
                         <label class="col-sm-2 control-label" for="input-name1">Username: </label>
                         <div class="col-sm-8">
                             <h:inputText id="user_username" value="#{adminBean.person.username}"  class="form-control" />
@@ -119,6 +87,7 @@
                     
                      <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Address: </label>
+
                         <div class="col-sm-8">
                             <h:inputText id="user_address" value="#{adminBean.person.address}"  class="form-control" />
                             <h:message for="user_address" errorClass="alert alert-danger" />
@@ -126,7 +95,6 @@
                     </div>
                     
                    
->>>>>>> 899c1b65592ee1fa85e9440f78264891aae5a18e
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-name1"></label>
                         <div class="col-sm-10">
@@ -137,7 +105,6 @@
                     </div>
                    
                 </h:form>
-<<<<<<< HEAD
                 <hr style="height: 2px; color: #333;" />
                  <h:outputText value="Category List" />
                 <!--TODO:wire proper list in table-->
@@ -162,7 +129,7 @@
                
 =======
                               
->>>>>>> 899c1b65592ee1fa85e9440f78264891aae5a18e
+                              
             </ui:define>
         </ui:composition>
     </h:body>
