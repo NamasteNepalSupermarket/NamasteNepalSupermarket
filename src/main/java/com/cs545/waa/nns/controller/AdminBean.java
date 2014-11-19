@@ -29,6 +29,9 @@ public class AdminBean implements Serializable {
 
     private Category category;
     private Product product;
+    private int activeCatId;
+
+    
     @EJB
     private CategoryFacadeLocal categoryFacadeLocal;
 
@@ -131,13 +134,49 @@ public class AdminBean implements Serializable {
         if (categoryFacadeLocal.findAll().isEmpty()) {
             Category cat1 = new Category("This is item1 description", "desktop.jpg", "Desktop");
             Category cat2 = new Category("This is item2 description", "mobile.jpg", "Mobile");
-         //   categoryFacadeLocal.create(cat1);
+            Category cat3 = new Category("This is item2 description", "mobile.jpg", "Laptops");
+            Category cat4 = new Category("This is item2 description", "mobile.jpg", "PC");
+            Category cat5 = new Category("This is item2 description", "mobile.jpg", "Macs");
+            Category cat6 = new Category("This is item2 description", "mobile.jpg", "Windows");
+            Category cat7 = new Category("This is item2 description", "mobile.jpg", "Tablets");
+            //   categoryFacadeLocal.create(cat1);
             //  categoryFacadeLocal.create(cat2);
-            List<Category> catlist = new ArrayList<>();
-            catlist.add(cat1);
-            catlist.add(cat2);
-            Product product1 = new Product("mobile", "This is samsung galaxy s", 100, "s5", 20, true, catlist);
+            
+             List<Category> catlist1 = new ArrayList<>();
+            catlist1.add(cat1);
+            catlist1.add(cat2);
+             List<Category> catlist2 = new ArrayList<>();
+            catlist2.add(cat3);
+            catlist2.add(cat2);
+             List<Category> catlist3 = new ArrayList<>();
+            catlist3.add(cat4);
+            catlist3.add(cat1);
+             List<Category> catlist4 = new ArrayList<>();
+            catlist4.add(cat5);
+            catlist4.add(cat4);
+             List<Category> catlist5 = new ArrayList<>();
+            catlist5.add(cat6);
+            catlist5.add(cat7);
+            List<Category> catlist6 = new ArrayList<>();
+            catlist6.add(cat7);
+            catlist6.add(cat2);
+            List<Category> catlist7 = new ArrayList<>();
+            catlist7.add(cat1);
+            catlist7.add(cat2);
+            Product product1 = new Product("Apple", "This is Apple description", "apple_logo.jpg", 100, "s5", 20, true, catlist1);
+            Product product2 = new Product("Canon EOS", "This is Canon EOS", "canon_eos_5d_1.jpg",100, "s5", 20, true, catlist2);
+            Product product3 = new Product("HTC Touch HD", "This is samsung galaxy s", "htc_touch_hd_1.jpg",100, "s5", 20, true, catlist3);
+            Product product4 = new Product("Iphone 6", "This is samsung galaxy s", "iphone_6.jpg",100, "s5", 20, true, catlist4);
+            Product product5 = new Product("Ipod Classic", "This is samsung galaxy s", "ipod_classic_2.jpg",100, "s5", 20, true, catlist5);
+            Product product6 = new Product("Mac Book", "This is samsung galaxy s", "macbook_2.jpg",100, "s5", 20, true, catlist6);
+            Product product7 = new Product("Mac Book Pro", "This is samsung galaxy s", "macbook_pro_4.jpg", 100, "s5", 20, true, catlist7);
             productFacadeLocal.create(product1);
+            productFacadeLocal.create(product2);
+            productFacadeLocal.create(product3);
+            productFacadeLocal.create(product4);
+            productFacadeLocal.create(product5);
+            productFacadeLocal.create(product6);
+            productFacadeLocal.create(product7);
           //  catlist.clear();
             // catlist = categoryFacadeLocal.findAll();
             //product1 = new Product("mobile", "This is samsung galaxy s4", 20, "s4", 5, true, catlist);
@@ -164,5 +203,20 @@ public class AdminBean implements Serializable {
         System.out.println("inside get product list for category : " + catId);
         return productFacadeLocal.findProductsByCategory(catId);
     }
+    
+    public String gotoCategoryPage(int catId) {
+        //getProductsByCategory(catId);
+        setActiveCatId(catId);
+        return "category";
+    }
+    public int getActiveCatId() {
+        return activeCatId;
+    }
+
+    public void setActiveCatId(int activeCatId) {
+        this.activeCatId = activeCatId;
+    }
+    
+    
 
 }

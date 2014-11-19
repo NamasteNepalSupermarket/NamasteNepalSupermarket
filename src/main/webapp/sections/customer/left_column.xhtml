@@ -2,46 +2,25 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <ui:composition>
-       <div class="col-sm-3" id="column_left">
-						<div class="box box-categories box-with-categories">
-  <div class="box-heading">Categories</div>
-  <div class="strip-line"></div>
-  <div class="box-content box-category">
-    <ul class="accordion" id="accordion-category">
-            <li class="panel">
-                <a href="#" class="active">Desktops (13)</a>
-                        <span class="head"><a style="float:right;padding-right:5px" class="accordion-toggle" data-toggle="collapse" data-parent="#accordion-category" href="#category1"><span class="plus">+</span><span class="minus">-</span></a></span>
-                <div id="category1" class="panel-collapse collapse in" style="clear:both">
-        	<ul>
-		       		        <li>
-		         		         <a href="#" class="active">PC (0)</a>
-		         		        </li>
-		       		        <li>
-		         		         <a href="#">Mac (1)</a>
-		         		        </li>
-		       	        </ul>
+        <div class="col-sm-3" id="column_left">
+            <div class="box box-categories box-with-categories">
+                <div class="box-heading">Categories</div>
+                <div class="strip-line"></div>
+                <div class="box-content box-category">
+                    <h:form>
+                        <ul class="accordion" id="accordion-category">
+                            <c:forEach items="#{adminBean.categoryList}" var="category">
+                                <li><h:commandLink  value="#{category.name}" action="#{adminBean.getProductsByCategory(category.id)}"  /></li>
+                            </c:forEach> 
+
+                        </ul>
+                    </h:form>
+                </div>
+            </div>
         </div>
-                      </li>
-            
-            <li class="panel">
-                <a href="#">Tablets (1)</a>
-                      </li>
-            <li class="panel">
-                <a href="#">Software (0)</a>
-                      </li>
-            <li class="panel">
-                <a href="#">Phones &amp; PDAs (3)</a>
-                      </li>
-            <li class="panel">
-                <a href="#">Cameras (2)</a>
-                      </li>
-            
-          </ul>
-  </div>
-</div>
-					</div>
     </ui:composition>
 </html>
 

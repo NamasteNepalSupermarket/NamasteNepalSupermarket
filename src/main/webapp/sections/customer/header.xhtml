@@ -54,7 +54,7 @@
                                     <!-- Header Left -->
                                     <div class="col-sm-4" id="header-left">
                                         <!-- Logo -->
-                                        <div class="logo"><a href="#"><h:graphicImage value="#{resource['images/logo.png']}" style="height:80px;"/></a></div>
+                                        <div class="logo"><a href=""><h:graphicImage value="#{resource['images/logo.png']}" style="height:80px;"/></a></div>
                                     </div>
 
                                     <!-- Header Right -->
@@ -88,14 +88,15 @@
                                 <div class="megamenu-wrapper">
                                     <div class="megamenu-pattern">
                                         <div class="container">
+                                              <h:form>
                                             <ul class="megamenu slide">
-                                                <li class="home"><a href="#"><i class="fa fa-home"></i></a></li>
-                                                <h:form>
-                                                    <c:forEach items="#{adminBean.onlyFourCategoryList}" var="category">
-                                                        <li><h:commandLink  value="#{category.name}" action="#{adminBean.getProductsByCategory(category.id)}"  /></li>
-                                                </c:forEach>
-                                                </h:form>
+                                                <li class="home"><a href=""><i class="fa fa-home"></i></a></li>
+                                              
+                                                <c:forEach items="#{adminBean.onlyFourCategoryList}" var="category">
+                                                    <li><h:commandLink  value="#{category.name}" action="#{adminBean.gotoCategoryPage(category.id)}"  /></li>
+                                                </c:forEach>                                                
                                             </ul>
+                                            </h:form>
                                         </div>
                                     </div>
                                 </div>
