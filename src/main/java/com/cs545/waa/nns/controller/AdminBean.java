@@ -141,4 +141,10 @@ public class AdminBean implements Serializable {
         categoryFacadeLocal.remove(categoryFacadeLocal.find(catId));
     }
 
+    @TransactionAttribute
+    public void editCategory(long catId) {
+        System.out.println("inside delete Category : " + catId);
+        category = categoryFacadeLocal.find(catId);
+    }
+
 }
