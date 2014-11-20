@@ -76,7 +76,7 @@
                     <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Category: </label>
                         <div class="col-sm-4">
-                            <p:selectOneListbox id="parent_product" style="height:100px"   filter="true" filterMatchMode="contains">
+                            <p:selectOneListbox id="parent_product" style="height:100px; overflow: hidden; overflow-y: scroll;"     filter="true" filterMatchMode="contains">
                                 <f:selectItems var="catgory" value="#{nnsRequestBean.categoryList}" itemLabel="#{catgory.name}"  itemValue="#{catgory.id}" />
                             </p:selectOneListbox>
                         </div>
