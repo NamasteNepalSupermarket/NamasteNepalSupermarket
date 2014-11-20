@@ -27,7 +27,7 @@
                             </h:panelGroup>
                             <h:message for="category_image" errorClass="alert alert-danger" />
                             <h:outputText value="Parent Category" />
-                            <p:selectOneListbox id="parent_category" value="#{nnsRequestBean.category.parent_category_id}" style="height:100px"   filter="true" filterMatchMode="contains">
+                            <p:selectOneListbox id="parent_category" value="#{nnsRequestBean.category.parent_category_id}" style="height:100px; overflow: hidden; overflow-y: scroll;"   filter="true" filterMatchMode="contains">
                                 <f:selectItems var="catgory" value="#{nnsRequestBean.categoryList}" itemLabel="#{catgory.name}"  itemValue="#{catgory.id}" />
                             </p:selectOneListbox>
                             &nbsp;
