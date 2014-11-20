@@ -14,31 +14,31 @@
                         <h:panelGrid columns="3" cellspacing="1%" cellpadding="1%" styleClass="table table-striped">
 
                             <h:outputText value="Category name" />
-                            <h:inputText id="category_name" value="#{adminBean.category.name}" />
+                            <h:inputText id="category_name" value="#{nnsRequestBean.category.name}" />
                             <h:message for="category_name" errorClass="alert alert-danger" />
 
                             <h:outputText value="Description" />
-                            <p:inputTextarea rows="10" cols="50" id="category_description" value="#{adminBean.category.description}" queryDelay="750" minQueryLength="4" />
+                            <p:inputTextarea rows="10" cols="50" id="category_description" value="#{nnsRequestBean.category.description}" queryDelay="750" minQueryLength="4" />
                             <h:message for="category_description" errorClass="alert alert-danger" />
                             <h:outputText value="Image" />
                             <h:panelGroup>
-                                <p:fileUpload id="category_image" value="#{adminBean.category.image_file}" update="msg" invalidFileMessage="Image file type is invalid" mode="simple"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
-                                <h:graphicImage library="uploads/img/category" name="#{adminBean.category.image}" width="20%" />     
+                                <p:fileUpload id="category_image" value="#{nnsRequestBean.category.image_file}" update="msg" invalidFileMessage="Image file type is invalid" mode="simple"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                                <h:graphicImage library="uploads/img/category" name="#{nnsRequestBean.category.image}" width="20%" />     
                             </h:panelGroup>
                             <h:message for="category_image" errorClass="alert alert-danger" />
                             <h:outputText value="Parent Category" />
-                            <p:selectOneListbox id="parent_category" value="#{adminBean.category.parent_category_id}" style="height:100px"   filter="true" filterMatchMode="contains">
-                                <f:selectItems var="catgory" value="#{adminBean.categoryList}" itemLabel="#{catgory.name}"  itemValue="#{catgory.id}" />
+                            <p:selectOneListbox id="parent_category" value="#{nnsRequestBean.category.parent_category_id}" style="height:100px"   filter="true" filterMatchMode="contains">
+                                <f:selectItems var="catgory" value="#{nnsRequestBean.categoryList}" itemLabel="#{catgory.name}"  itemValue="#{catgory.id}" />
                             </p:selectOneListbox>
                             &nbsp;
                             &nbsp;
-                            <h:commandButton value="Create" action="#{adminBean.saveCategory()}"  /> 
+                            <h:commandButton value="Create" action="#{nnsRequestBean.saveCategory()}"  /> 
                             &nbsp;
                         </h:panelGrid>
                         <h:outputText value="Category List" />
                         <!--TODO:wire proper list in table-->
                         <div id="cat_list" class="table-responsive">
-                            <p:dataTable var="cat" value="#{adminBean.categoryList}" styleClass="table table-striped">
+                            <p:dataTable var="cat" value="#{nnsRequestBean.categoryList}" styleClass="table table-striped">
                                 <p:column headerText="Id">
                                     <h:outputText value="#{cat.id}" />
                                 </p:column>
@@ -60,9 +60,9 @@
                                 <p:column headerText="Action">
                                     <div class="row" style="padding-left: 20%">
                                         <p:commandButton  value="Edit" update="@form"  >
-                                            <f:setPropertyActionListener target="#{adminBean.category}" value="#{cat}" />
+                                            <f:setPropertyActionListener target="#{nnsRequestBean.category}" value="#{cat}" />
                                         </p:commandButton>
-                                        <p:remoteCommand name="rc" update="@form" actionListener="#{adminBean.deleteCategory(cat.id)}" />
+                                        <p:remoteCommand name="rc" update="@form" actionListener="#{nnsRequestBean.deleteCategory(cat.id)}" />
                                         <p:commandButton type="button" onclick="rc()" value="Delete" />
 
                                     </div>
