@@ -13,10 +13,9 @@
 
                         <h1 id="title-page">#{adminBean.category.name}</h1>
 
-                        <h1 id="title-page">Desktops</h1>
                         <div class="category-info clearfix">
                             <div class="image">
-                                <img src="http://localhost/outletdp/image/cache/data/demo/compaq_presario-80x80.jpg" alt="Desktops" />
+                                <h:graphicImage library="uploads/img/category/" name="#{adminBean.category.image}"/> 
                             </div>
                         </div>
                     </div>
@@ -35,13 +34,13 @@
 
                                                 <h:form>
                                                     <h:commandLink action="#{adminBean.gotoProductPage(prod.id)}"  >
-                                                                   <h:graphicImage library="uploads/img/product/" name="#{adminBean.category.image}"/>               
+                                                        <h:graphicImage library="uploads/img/product/" name="#{prod.image}" height="210px" width="150px"/>               
                                                     </h:commandLink>
                                                 </h:form>
                                             </div>
                                         </div>
                                         <div class="right">
-                                            <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=48"><h:outputText value="#{product.name}"/></a></div>
+                                            <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=48"><h:outputText value="#{prod.name}"/></a></div>
                                             <div class="price">
                                                 $ #{prod.price}					</div>
 

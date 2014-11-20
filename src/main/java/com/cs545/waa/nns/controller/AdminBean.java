@@ -85,7 +85,7 @@ public class AdminBean implements Serializable {
     }
 
     public List<Product> getOnlyFourProductList() {
-        int[] range = new int[]{0, 4};
+        int[] range = new int[]{0, 3};
         return productFacadeLocal.findRange(range);
     }
 
