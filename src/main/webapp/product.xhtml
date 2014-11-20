@@ -9,10 +9,10 @@
             <ui:define name="content">
                 <div class="col-sm-9">
                     
-                <h1 id="title-page">MacBook</h1>
+                <h1 id="title-page">#{adminBean.product.name}</h1>
                 <div class="col-sm-12 center-column">
                     <div itemscope="" itemtype="http://data-vocabulary.org/Product">
-                        <span itemprop="name" class="hidden">MacBook</span>
+                        <span itemprop="name" class="hidden">#{adminBean.product.name}</span>
                         <div class="product-info">
                             <div class="row">
                                 <div class="col-sm-12">
@@ -24,15 +24,16 @@
                                                 <div class="col-sm-12">
                                                     <div class="product-image">
 
-                                                        <img src="http://localhost/outletdp/image/cache/data/demo/macbook_1-228x228.jpg" title="MacBook" alt="MacBook" id="image" itemprop="image" data-zoom-image="http://localhost/outletdp/image/cache/data/demo/macbook_1-500x500.jpg" />                                                    </div>
+                                                       <h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" width="350px"/>                                                   </div>
                                                 </div>
 
-                                                <div class="col-sm-12">
+                                                <div class="col-sm-12"  style="text-align: center; padding-left: 50px;">
                                                     <div class="thumbnails clearfix">
                                                         <ul>
-                                                            <li><p><a href="http://localhost/outletdp/image/cache/data/demo/macbook_5-500x500.jpg" ><img src="http://localhost/outletdp/image/cache/data/demo/macbook_5-74x74.jpg" title="MacBook" alt="MacBook" /></a></p></li>
-                                                            <li><p><a href="http://localhost/outletdp/image/cache/data/demo/macbook_5-500x500.jpg" ><img src="http://localhost/outletdp/image/cache/data/demo/macbook_5-74x74.jpg" title="MacBook" alt="MacBook" /></a></p></li>
-                                                            <li><p><a href="http://localhost/outletdp/image/cache/data/demo/macbook_5-500x500.jpg" ><img src="http://localhost/outletdp/image/cache/data/demo/macbook_5-74x74.jpg" title="MacBook" alt="MacBook" /></a></p></li>
+                                                            <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" height="80px" width="80px"/></li>
+                                                            <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}"  height="80px" width="80px"/></li>
+                                                            <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" height="80px" width="80px"/></li>
+                                                            <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" height="80px" width="80px"/></li>
                                                         </ul>
                                                     </div>
                                                 </div>
@@ -42,17 +43,17 @@
                                         <div class="col-sm-6 product-center clearfix">
                                             <div itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
                                                 <div class="description">
-                                                    <span>Manufacturer:</span> <a href="http://localhost/outletdp/index.php?route=product/manufacturer/info&amp;manufacturer_id=8" itemprop="brand">Apple</a><br/>
-                                                        <span>Model no:</span> Product 16 <br/>
+                                                    
+                                                        <span>Model no:</span> #{adminBean.product.model}<br/>
                                                             
 
-                                                                <span>Available QTY:</span> In Stock <br/>
+                                                                <span>Available QTY:</span>  #{adminBean.product.quantity}<br/>
 
 
                                                                         </div>
                                                                         <div class="price clearfix">
                                                                             <div class="pull-left" style="padding-left:50px;">
-                                                                                <span class="price-new"><span itemprop="price">$500.00</span></span>
+                                                                                <span class="price-new"><span itemprop="price">$ #{adminBean.product.price}</span></span>
                                                                                 <br />
                                                                             </div>
 
@@ -60,7 +61,6 @@
 
                                                                         </div>
                                                                         <div id="product">
-
                                                                             
                                                                         </div><!-- End #product -->
                                                                                            
@@ -74,22 +74,7 @@
                                                                                             <div id="tabs" class="htabs">
                                                                                                 <a href="#tab-description" class="selected">Description</a></div>
                                                                                             <div id="tab-description" class="tab-content" itemprop="description" style="display: block;"><div>
-                                                                                                    <p>
-                                                                                                        <b>Intel Core 2 Duo processor</b></p>
-                                                                                                    <p>
-                                                                                                        Powered by an Intel Core 2 Duo processor at speeds up to 2.16GHz, the new MacBook is the fastest ever.</p>
-                                                                                                    <p>
-                                                                                                        <b>1GB memory, larger hard drives</b></p>
-                                                                                                    <p>
-                                                                                                        The new MacBook now comes with 1GB of memory standard and larger hard drives for the entire line perfect for running more of your favorite applications and storing growing media collections.</p>
-                                                                                                    <p>
-                                                                                                        <b>Sleek, 1.08-inch-thin design</b></p>
-                                                                                                    <p>
-                                                                                                        MacBook makes it easy to hit the road thanks to its tough polycarbonate case, built-in wireless technologies, and innovative MagSafe Power Adapter that releases automatically if someone accidentally trips on the cord.</p>
-                                                                                                    <p>
-                                                                                                        <b>Built-in iSight camera</b></p>
-                                                                                                    <p>
-                                                                                                        Right out of the box, you can have a video chat with friends or family,2 record a video at your desk, or take fun pictures with Photo Booth</p>
+                                                                                                    #{adminBean.product.description}
                                                                                                 </div>
                                                                                             </div>
                                                                                                                                                                  </div>
