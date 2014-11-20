@@ -29,5 +29,5 @@ public interface RequestFacadeLocal {
     List<Request> findRange(int[] range);
 
     int count();
-    
+
 }

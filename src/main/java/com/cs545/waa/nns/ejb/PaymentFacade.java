@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class PaymentFacade extends AbstractFacade<Payment> implements PaymentFacadeLocal {
+
     @PersistenceContext(unitName = "com.cs545.waa_NamasteNepalSupermarket_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -27,5 +28,5 @@ public class PaymentFacade extends AbstractFacade<Payment> implements PaymentFac
     public PaymentFacade() {
         super(Payment.class);
     }
-    
+
 }

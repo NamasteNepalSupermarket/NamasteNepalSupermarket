@@ -29,5 +29,5 @@ public interface AddressFacadeLocal {
     List<Address> findRange(int[] range);
 
     int count();
-    
+
 }

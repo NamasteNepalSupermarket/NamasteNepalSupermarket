@@ -29,5 +29,5 @@ public interface ShippingFacadeLocal {
     List<Shipping> findRange(int[] range);
 
     int count();
-    
+
 }

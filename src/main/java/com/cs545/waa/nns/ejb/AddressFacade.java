@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class AddressFacade extends AbstractFacade<Address> implements AddressFacadeLocal {
+
     @PersistenceContext(unitName = "com.cs545.waa_NamasteNepalSupermarket_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -27,5 +28,5 @@ public class AddressFacade extends AbstractFacade<Address> implements AddressFac
     public AddressFacade() {
         super(Address.class);
     }
-    
+
 }

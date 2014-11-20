@@ -16,7 +16,8 @@ import javax.persistence.OneToOne;
  * @author Bishal Timilsina
  */
 @Entity
-public class Address implements Serializable{
+public class Address implements Serializable {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -28,7 +29,7 @@ public class Address implements Serializable{
     private String postalcode;
     private String country;
     @OneToOne
-    private State state;    
+    private State state;
 
     public Address() {
     }
@@ -88,17 +89,20 @@ public class Address implements Serializable{
     public void setPostalcode(String postalcode) {
         this.postalcode = postalcode;
     }
+
     public State getState() {
         return state;
     }
+
     public void setState(State state) {
         this.state = state;
     }
+
     public String getCountry() {
         return country;
     }
 
     public void setCountry(String country) {
         this.country = country;
-    }     
+    }
 }

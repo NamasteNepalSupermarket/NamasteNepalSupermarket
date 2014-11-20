@@ -17,7 +17,8 @@ import javax.persistence.Inheritance;
  */
 @Entity
 @Inheritance
-public class Person implements Serializable{
+public class Person implements Serializable {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -25,10 +26,8 @@ public class Person implements Serializable{
     private String password;
     private String fullname;
 
-    
     private String email;
     private Address address;
-    
 
     public Person() {
     }
@@ -40,7 +39,8 @@ public class Person implements Serializable{
     public void setId(Long id) {
         this.id = id;
     }
-public String getFullname() {
+
+    public String getFullname() {
         return fullname;
     }
 
@@ -63,8 +63,6 @@ public String getFullname() {
     public void setPassword(String password) {
         this.password = password;
     }
-
-    
 
     public String getEmail() {
         return email;

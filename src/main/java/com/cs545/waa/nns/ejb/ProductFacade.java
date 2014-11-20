@@ -24,6 +24,7 @@ import javax.persistence.criteria.Root;
  */
 @Stateless
 public class ProductFacade extends AbstractFacade<Product> implements ProductFacadeLocal {
+
     @PersistenceContext(unitName = "com.cs545.waa_NamasteNepalSupermarket_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -47,7 +48,6 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
         criteriaQuery.where(containsFavoritedProduct);
 
         //Root<Category> categoryRoot = criteriaQuery.from(Category.class);
-        
         // criteriaQuery.select(productRoot).distinct(true).where(criteriaBuilder.equal(categoryRoot, productRoot.get("categories")));
         TypedQuery<Product> q = em.createQuery(criteriaQuery);
         System.out.println("query : " + criteriaQuery.toString() + ">>>" + q.toString());

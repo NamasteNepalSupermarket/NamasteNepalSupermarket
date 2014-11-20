@@ -20,17 +20,16 @@ import javax.inject.Named;
  */
 @Named
 @RequestScoped
-public class UserBean implements Serializable{
-    
+public class UserBean implements Serializable {
+
     @EJB
     private CategoryFacadeLocal categoryFacade;
     private Category category;
 
     public UserBean() {
-        category=new Category();
+        category = new Category();
     }
 
-    
     public Category getCategory() {
         return category;
     }
@@ -39,21 +38,19 @@ public class UserBean implements Serializable{
         this.category = category;
     }
 
-    
-    
     @TransactionAttribute
-    public void create(){
+    public void create() {
         System.out.println("inside create");
-        Category cat=new Category();
+        Category cat = new Category();
         cat.setName(category.getName());
         cat.setDescription(category.getDescription());
         categoryFacade.create(cat);
-      //  categoryFacade.findAll();
-      // List<Category> catList= categoryFacadeLocal.findAll();
-       // System.out.println("cat list size : "+catList.size());
+        //  categoryFacade.findAll();
+        // List<Category> catList= categoryFacadeLocal.findAll();
+        // System.out.println("cat list size : "+catList.size());
     }
-    
-    public List<Category> categoryList(){
+
+    public List<Category> categoryList() {
         return categoryFacade.findAll();
     }
 
@@ -63,5 +60,5 @@ public class UserBean implements Serializable{
 
     public void setCategoryFacade(CategoryFacadeLocal categoryFacade) {
         this.categoryFacade = categoryFacade;
-    }               
+    }
 }

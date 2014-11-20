@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class PersonFacade extends AbstractFacade<Person> implements PersonFacadeLocal {
+
     @PersistenceContext(unitName = "com.cs545.waa_NamasteNepalSupermarket_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -28,5 +29,4 @@ public class PersonFacade extends AbstractFacade<Person> implements PersonFacade
         super(Person.class);
     }
 
-    
 }

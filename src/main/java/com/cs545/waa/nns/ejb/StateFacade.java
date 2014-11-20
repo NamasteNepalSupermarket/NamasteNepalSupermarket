@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class StateFacade extends AbstractFacade<State> implements StateFacadeLocal {
+
     @PersistenceContext(unitName = "com.cs545.waa_NamasteNepalSupermarket_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -27,5 +28,5 @@ public class StateFacade extends AbstractFacade<State> implements StateFacadeLoc
     public StateFacade() {
         super(State.class);
     }
-    
+
 }

@@ -29,5 +29,5 @@ public interface StateFacadeLocal {
     List<State> findRange(int[] range);
 
     int count();
-    
+
 }

@@ -22,7 +22,8 @@ import org.primefaces.model.UploadedFile;
  * @author Bishal Timilsina
  */
 @Entity
-public class Product implements Serializable{
+public class Product implements Serializable {
+
     @Id
     @GeneratedValue
     private Long id;
@@ -35,17 +36,17 @@ public class Product implements Serializable{
     private boolean status;
     @Transient
     private UploadedFile image_file;
-    
+
     @ManyToOne
     private Request refRequest;
     @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Category> categories;
 
     public Product() {
-        categories=new ArrayList<>();
+        categories = new ArrayList<>();
     }
 
-    public Product(String name, String description,String image, double price, String model, long quantity, boolean status, List<Category> categories) {
+    public Product(String name, String description, String image, double price, String model, long quantity, boolean status, List<Category> categories) {
         this.name = name;
         this.description = description;
         this.price = price;
@@ -119,15 +120,19 @@ public class Product implements Serializable{
     public void setStatus(boolean status) {
         this.status = status;
     }
+
     public Request getRefRequest() {
         return refRequest;
     }
+
     public void setRefRequest(Request refRequest) {
         this.refRequest = refRequest;
     }
+
     public List<Category> getCategories() {
         return categories;
     }
+
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }

@@ -29,5 +29,5 @@ public interface AdminFacadeLocal {
     List<Admin> findRange(int[] range);
 
     int count();
-    
+
 }

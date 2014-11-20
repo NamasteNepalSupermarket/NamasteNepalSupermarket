@@ -6,9 +6,9 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:body>
-       <ui:composition template="../template/admin_dashboard.xhtml">
+        <ui:composition template="../template/admin_dashboard.xhtml">
             <ui:define name="content">
-                  
+
                 <h1 >Manage User</h1> 
                 <h:form enctype="multipart/form-data">
                     <div class="form-group required">
@@ -27,7 +27,7 @@
                         </div>
                     </div>
 
-                     <div style="clear:both; height: 5px;"></div>
+                    <div style="clear:both; height: 5px;"></div>
                     <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Password: </label>
                         <div class="col-sm-8">
@@ -44,7 +44,7 @@
                         </div>
                     </div>
                     <div style="clear:both; height: 5px;"></div>
-                    
+
                     <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Email: </label>
                         <div class="col-sm-8">
@@ -53,16 +53,16 @@
                         </div>
                     </div>
                     <div style="clear:both; height: 5px;"></div>
-                    
-                     <div class="form-group required">
+
+                    <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Address: </label>
                         <div class="col-sm-8">
                             <h:inputText id="user_address" value="#{adminBean_auth.admin.address}"  class="form-control" />
                             <h:message for="user_address" errorClass="alert alert-danger" />
                         </div>
                     </div>
-                    
-                   
+
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-name1"></label>
                         <div class="col-sm-10">
@@ -71,9 +71,9 @@
 
                         </div>
                     </div>
-                   
+
                 </h:form>
-                              
+
             </ui:define>
         </ui:composition>
     </h:body>

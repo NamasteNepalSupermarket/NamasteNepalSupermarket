@@ -16,6 +16,7 @@ import javax.persistence.PersistenceContext;
  */
 @Stateless
 public class ShippingFacade extends AbstractFacade<Shipping> implements ShippingFacadeLocal {
+
     @PersistenceContext(unitName = "com.cs545.waa_NamasteNepalSupermarket_war_1.0-SNAPSHOTPU")
     private EntityManager em;
 
@@ -27,5 +28,5 @@ public class ShippingFacade extends AbstractFacade<Shipping> implements Shipping
     public ShippingFacade() {
         super(Shipping.class);
     }
-    
+
 }

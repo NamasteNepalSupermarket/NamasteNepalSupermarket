@@ -29,5 +29,5 @@ public interface PaymentFacadeLocal {
     List<Payment> findRange(int[] range);
 
     int count();
-    
+
 }

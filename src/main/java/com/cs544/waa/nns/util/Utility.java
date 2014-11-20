@@ -51,7 +51,7 @@ public class Utility {
                 }
                 //create the file on server
                 File serverFile = new File(imageDir.getAbsolutePath() + File.separator + imageFile.getFileName());
-            
+
                 try (BufferedOutputStream videoStream = new BufferedOutputStream(new FileOutputStream(serverFile))) {
                     videoStream.write(IOUtils.toByteArray(input));
                 }

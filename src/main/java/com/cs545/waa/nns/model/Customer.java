@@ -15,19 +15,20 @@ import javax.persistence.OneToMany;
  * @author Bishal Timilsina
  */
 @Entity
-public class Customer extends Person{
-    
-    @OneToMany(mappedBy="buyer")
-    private List<Request> orders; 
-    
-    public Customer() { 
-        orders=new ArrayList<>();
+public class Customer extends Person {
+
+    @OneToMany(mappedBy = "buyer")
+    private List<Request> orders;
+
+    public Customer() {
+        orders = new ArrayList<>();
     }
-            
+
     public List<Request> getOrders() {
         return orders;
     }
+
     public void setOrders(List<Request> orders) {
         this.orders = orders;
-    }            
+    }
 }

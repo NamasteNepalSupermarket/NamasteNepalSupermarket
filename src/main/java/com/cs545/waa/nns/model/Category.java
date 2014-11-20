@@ -38,20 +38,18 @@ public class Category implements Serializable {
     private Category parentCategory;
     @ManyToMany(mappedBy = "categories", cascade = CascadeType.REMOVE)
     private List<Product> products;
+
     public Category() {
-        products=new ArrayList<>();
+        products = new ArrayList<>();
     }
 
     public Category(String description, String image, String name) {
         this.description = description;
         this.image = image;
         this.name = name;
-        products=new ArrayList<>();
+        products = new ArrayList<>();
     }
-    
-    
 
-    
     public Long getId() {
         return id;
     }
@@ -76,7 +74,6 @@ public class Category implements Serializable {
         this.image_file = image_file;
     }
 
-    
     public String getDescription() {
         return description;
     }
@@ -100,20 +97,23 @@ public class Category implements Serializable {
     public void setName(String name) {
         this.name = name;
     }
-    
+
     public Category getParentCategory() {
         return parentCategory;
     }
+
     public void setParentCategory(Category parentCategory) {
         this.parentCategory = parentCategory;
-    }   
+    }
+
     public List<Product> getProducts() {
         return products;
     }
+
     public void setProducts(List<Product> products) {
         this.products = products;
     }
-   
+
     @Override
     public int hashCode() {
         int hash = 0;

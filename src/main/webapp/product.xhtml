@@ -8,80 +8,80 @@
         <ui:composition template="/template/home_template.xhtml">
             <ui:define name="content">
                 <div class="col-sm-9">
-                    
-                <h1 id="title-page">#{adminBean.product.name}</h1>
-                <div class="col-sm-12 center-column">
-                    <div itemscope="" itemtype="http://data-vocabulary.org/Product">
-                        <span itemprop="name" class="hidden">#{adminBean.product.name}</span>
-                        <div class="product-info">
-                            <div class="row">
-                                <div class="col-sm-12">
-                                    <div class="row" id="quickview_product">
 
-                                        <div class="col-sm-6 popup-gallery">
-                                            <div class="row">
+                    <h1 id="title-page">#{adminBean.product.name}</h1>
+                    <div class="col-sm-12 center-column">
+                        <div itemscope="" itemtype="http://data-vocabulary.org/Product">
+                            <span itemprop="name" class="hidden">#{adminBean.product.name}</span>
+                            <div class="product-info">
+                                <div class="row">
+                                    <div class="col-sm-12">
+                                        <div class="row" id="quickview_product">
 
-                                                <div class="col-sm-12">
-                                                    <div class="product-image">
+                                            <div class="col-sm-6 popup-gallery">
+                                                <div class="row">
 
-                                                       <h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" width="350px"/>                                                   </div>
-                                                </div>
+                                                    <div class="col-sm-12">
+                                                        <div class="product-image">
 
-                                                <div class="col-sm-12"  style="text-align: center; padding-left: 50px;">
-                                                    <div class="thumbnails clearfix">
-                                                        <ul>
-                                                            <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" height="80px" width="80px"/></li>
-                                                            <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}"  height="80px" width="80px"/></li>
-                                                            <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" height="80px" width="80px"/></li>
-                                                            <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" height="80px" width="80px"/></li>
-                                                        </ul>
+                                                            <h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" width="350px"/>                                                   </div>
+                                                    </div>
+
+                                                    <div class="col-sm-12"  style="text-align: center; padding-left: 50px;">
+                                                        <div class="thumbnails clearfix">
+                                                            <ul>
+                                                                <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" height="80px" width="80px"/></li>
+                                                                <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}"  height="80px" width="80px"/></li>
+                                                                <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" height="80px" width="80px"/></li>
+                                                                <li><h:graphicImage library="uploads/img/product/" name="#{adminBean.product.image}" height="80px" width="80px"/></li>
+                                                            </ul>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <div class="col-sm-6 product-center clearfix">
-                                            <div itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
-                                                <div class="description">
-                                                    
+                                            <div class="col-sm-6 product-center clearfix">
+                                                <div itemprop="offerDetails" itemscope="" itemtype="http://data-vocabulary.org/Offer">
+                                                    <div class="description">
+
                                                         <span>Model no:</span> #{adminBean.product.model}<br/>
-                                                            
-
-                                                                <span>Available QTY:</span>  #{adminBean.product.quantity}<br/>
 
 
-                                                                        </div>
-                                                                        <div class="price clearfix">
-                                                                            <div class="pull-left" style="padding-left:50px;">
-                                                                                <span class="price-new"><span itemprop="price">$ #{adminBean.product.price}</span></span>
-                                                                                <br />
-                                                                            </div>
+                                                        <span>Available QTY:</span>  #{adminBean.product.quantity}<br/>
 
-                                                                        </div>
 
-                                                                        </div>
-                                                                        <div id="product">
-                                                                            
-                                                                        </div><!-- End #product -->
-                                                                                           
-                                                                                            </div>
-                                                                                            </div>
-                                                                                            </div>
+                                                    </div>
+                                                    <div class="price clearfix">
+                                                        <div class="pull-left" style="padding-left:50px;">
+                                                            <span class="price-new"><span itemprop="price">$ #{adminBean.product.price}</span></span>
+                                                            <br />
+                                                        </div>
 
-                                                                                            </div>
-                                                                                            </div>
-                                                                                            <div style="clear:both;"></div>
-                                                                                            <div id="tabs" class="htabs">
-                                                                                                <a href="#tab-description" class="selected">Description</a></div>
-                                                                                            <div id="tab-description" class="tab-content" itemprop="description" style="display: block;"><div>
-                                                                                                    #{adminBean.product.description}
-                                                                                                </div>
-                                                                                            </div>
-                                                                                                                                                                 </div>
+                                                    </div>
 
-                                                                                                                                                                            </div>
+                                                </div>
+                                                <div id="product">
+
+                                                </div><!-- End #product -->
+
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                </div>
+                            </div>
+                            <div style="clear:both;"></div>
+                            <div id="tabs" class="htabs">
+                                <a href="#tab-description" class="selected">Description</a></div>
+                            <div id="tab-description" class="tab-content" itemprop="description" style="display: block;"><div>
+                                    #{adminBean.product.description}
+                                </div>
+                            </div>
+                        </div>
+
                     </div>
-                                                                                                                                                                            </ui:define>
-                                                                                                                                                                            </ui:composition>
-                                                                                                                                                                            </h:body>
-                                                                                                                                                                            </html>
+                </div>
+            </ui:define>
+        </ui:composition>
+    </h:body>
+</html>

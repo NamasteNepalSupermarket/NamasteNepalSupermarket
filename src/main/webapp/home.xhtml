@@ -4,8 +4,8 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
       xmlns:ui="http://java.sun.com/jsf/facelets"
-       xmlns:p="http://primefaces.org/ui"
-       xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+      xmlns:p="http://primefaces.org/ui"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
         <ui:composition template="/template/home_template.xhtml">
             <ui:define name="content">
@@ -26,7 +26,7 @@
                         </ul>
                     </div>
                     <script type="text/javascript" charset="utf-8">
-                        $(window).load(function() {
+                        $(window).load(function () {
                             $('.flexslider').flexslider();
                         });</script>
 
@@ -41,43 +41,43 @@
                                         <div class="active item">
                                             <div class="product-grid">
                                                 <div class="row">	    				    			
-                                                    
-                                               
-                                                    
-                                                     <c:forEach items="#{adminBean.onlyFourProductList}" var="prod">
-                                <div class="col-sm-3 col-xs-6">
 
-                                    <!-- Product -->
-                                    <div class="product clearfix product-hover">
-                                        <div class="left">
 
-                                            <div class="image ">
 
-                                                <h:form>
-                                                    <h:commandLink action="#{adminBean.gotoProductPage(prod.id)}"  >
-                                                        <h:graphicImage library="uploads/img/product/" name="#{prod.image}" height="210px" width="150px"/>               
-                                                    </h:commandLink>
-                                                </h:form>
-                                            </div>
-                                        </div>
-                                        <div class="right">
-                                            <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=48"><h:outputText value="#{prod.name}"/></a></div>
-                                            <div class="price">
-                                                $ #{prod.price}					</div>
+                                                    <c:forEach items="#{adminBean.onlyFourProductList}" var="prod">
+                                                        <div class="col-sm-3 col-xs-6">
 
-                                        </div>
-                                    </div>		  	</div>
-                            </c:forEach>
+                                                            <!-- Product -->
+                                                            <div class="product clearfix product-hover">
+                                                                <div class="left">
 
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
-                                                    
+                                                                    <div class="image ">
+
+                                                                        <h:form>
+                                                                            <h:commandLink action="#{adminBean.gotoProductPage(prod.id)}"  >
+                                                                                <h:graphicImage library="uploads/img/product/" name="#{prod.image}" height="210px" width="150px"/>               
+                                                                            </h:commandLink>
+                                                                        </h:form>
+                                                                    </div>
+                                                                </div>
+                                                                <div class="right">
+                                                                    <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=48"><h:outputText value="#{prod.name}"/></a></div>
+                                                                    <div class="price">
+                                                                        $ #{prod.price}					</div>
+
+                                                                </div>
+                                                            </div>		  	</div>
+                                                    </c:forEach>
+
+
+
+
+
+
+
+
+
+
                                                 </div></div></div>
 
                                     </div>

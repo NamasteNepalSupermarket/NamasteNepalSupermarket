@@ -15,33 +15,39 @@ import javax.persistence.Id;
  * @author Bishal Timilsina
  */
 @Entity
-public class State implements Serializable{
+public class State implements Serializable {
+
     @Id
     @GeneratedValue
     private Long id;
     private String name;
-    private String correspondingCountry;    
+    private String correspondingCountry;
     private Integer zipcodeStart;
 
     public State() {
-    }                
+    }
 
     public String getName() {
         return name;
     }
+
     public void setName(String name) {
         this.name = name;
     }
+
     public String getCorrespondingCountry() {
         return correspondingCountry;
     }
+
     public void setCorrespondingCountry(String correspondingCountry) {
         this.correspondingCountry = correspondingCountry;
     }
+
     public Integer getZipcodeStart() {
         return zipcodeStart;
     }
+
     public void setZipcodeStart(Integer zipcodeStart) {
         this.zipcodeStart = zipcodeStart;
-    }                
+    }
 }
