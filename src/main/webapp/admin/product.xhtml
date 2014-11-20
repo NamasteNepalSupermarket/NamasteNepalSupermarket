@@ -105,7 +105,7 @@
                         </div>
                     </div>
 
-                </h:form>
+                
                 <hr style="height: 2px; color: #333;" />
                
                 <h1><h:outputText value="Product List" /></h1>
@@ -127,22 +127,17 @@
                             <h:graphicImage library="uploads/img/product" name="#{product.image}" width="20%" />
                         </p:column>
                         <p:column headerText="Action">
-                            <div class="row">
-                                <div style="padding-left: 20%;" class="pull-left">
-                                    <h:form>
-                                        <h:commandButton action="#{adminBean.editProduct(product.id)}" class="btn btn-default  fa  fa-edit" value="Edit" immediate="true"/>
-                                    </h:form>
-                                </div>
-                                <div>
-                                    <h:form>
-                                        <h:commandButton action="#{adminBean.deleteProduct(product.id)}" class="btn btn-default  fa  fa-edit" value="Delete" immediate="true"/>
-                                    </h:form>     
-                                </div> 
+                            <div class="row" style="padding-left: 20%;">
+                                <p:commandButton  value="Edit" update="@form"  >
+                                    <f:setPropertyActionListener target="#{adminBean.product}" value="#{product}" />
+                                </p:commandButton>
+                                <p:remoteCommand name="rc" update="@form" actionListener="#{adminBean.deleteProduct(product.id)}" />
+                                <p:commandButton type="button" onclick="rc()" value="Delete" />
                             </div>
                         </p:column>
                     </p:dataTable>
                 </div>
-
+                </h:form>
             </ui:define>
         </ui:composition>
     </h:body>

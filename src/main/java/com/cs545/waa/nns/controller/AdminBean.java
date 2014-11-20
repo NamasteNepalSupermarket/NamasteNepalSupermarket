@@ -201,14 +201,6 @@ public class AdminBean implements Serializable {
     }
 
     @TransactionAttribute
-    public void editCategory(long catId) {
-        System.out.println("inside delete Category : " + catId);
-        category = categoryFacadeLocal.find(catId);
-    }
-
-    
-    
-    @TransactionAttribute
     public List<Product> getProductsByCategory(int catId) {
         System.out.println("inside get product list for category : " + catId);
         return productFacadeLocal.findProductsByCategory(catId);
