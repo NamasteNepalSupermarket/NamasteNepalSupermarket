@@ -83,20 +83,11 @@ import javax.inject.Named;
         return nextPage;
     }
 
-    private boolean isInvalid(){        
-        System.out.println(admin.getUsername());
-        if(admin.getPassword()!=null){
-            try {
-                System.out.println(MD5encrypt.getCipher(admin.getPassword()));
-            } catch (NoSuchAlgorithmException ex) {
-                Logger.getLogger(com.cs545.waa.nns.controller.AdminBean_auth.class.getName()).log(Level.SEVERE, null, ex);
-            }
-        }
+    private boolean isInvalid(){                        
         boolean invalid=true;
         if(admin.getUsername()!=null && admin.getPassword()!=null){
             for(Admin a:getAdminList()){
-                try {
-                    System.out.println(a.getUsername()+":"+a.getPassword());
+                try {                    
                     if(admin.getUsername().equals(a.getUsername()) && MD5encrypt.getCipher(admin.getPassword()).equals(a.getPassword())){
                         authStr="Log Out";
                         invalid=false;
