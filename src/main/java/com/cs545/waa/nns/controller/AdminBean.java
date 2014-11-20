@@ -93,7 +93,7 @@ public class AdminBean implements Serializable {
     }
     
     @TransactionAttribute
-    public void saveCategory() {
+    public String saveCategory() {
         System.out.println("inside saveCategory method");
         System.out.println("category  : " + category.toString());
         //System.out.println("filename :" + category.getImage_file());
@@ -106,10 +106,11 @@ public class AdminBean implements Serializable {
             }
             categoryFacadeLocal.create(category);
             Utility.saveImageFile(category);
+          
         } else {
             //edit operation
         }
-
+        return "category";
     }
     
     @TransactionAttribute
@@ -130,15 +131,17 @@ public class AdminBean implements Serializable {
         if (categoryFacadeLocal.findAll().isEmpty()) {
             Category cat1 = new Category("This is item1 description", "desktop.jpg", "Desktop");
             Category cat2 = new Category("This is item2 description", "mobile.jpg", "Mobile");
-            categoryFacadeLocal.create(cat1);
-            categoryFacadeLocal.create(cat2);
+         //   categoryFacadeLocal.create(cat1);
+            //  categoryFacadeLocal.create(cat2);
             List<Category> catlist = new ArrayList<>();
             catlist.add(cat1);
             catlist.add(cat2);
-            Product product = new Product("mobile", "This is samsung galaxy s", 100, "s5", 20, true, catlist);
-            productFacadeLocal.create(product);
-            product = new Product("mobile", "This is samsung galaxy s4", 20, "s4", 5, true, catlist);
-            productFacadeLocal.create(product);
+            Product product1 = new Product("mobile", "This is samsung galaxy s", 100, "s5", 20, true, catlist);
+            productFacadeLocal.create(product1);
+          //  catlist.clear();
+            // catlist = categoryFacadeLocal.findAll();
+            //product1 = new Product("mobile", "This is samsung galaxy s4", 20, "s4", 5, true, catlist);
+            //productFacadeLocal.create(product1);
 
         }
      
