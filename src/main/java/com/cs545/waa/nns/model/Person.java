@@ -27,7 +27,7 @@ public class Person implements Serializable{
 
     
     private String email;
-    private String address;
+    private Address address;
     
 
     public Person() {
@@ -48,13 +48,6 @@ public String getFullname() {
         this.fullname = fullname;
     }
 
-    public String getAddress() {
-        return address;
-    }
-
-    public void setAddress(String address) {
-        this.address = address;
-    }
     public String getUsername() {
         return username;
     }
@@ -79,6 +72,14 @@ public String getFullname() {
 
     public void setEmail(String email) {
         this.email = email;
+    }
+
+    public Address getAddress() {
+        return address;
+    }
+
+    public void setAddress(Address address) {
+        this.address = address;
     }
 
 }

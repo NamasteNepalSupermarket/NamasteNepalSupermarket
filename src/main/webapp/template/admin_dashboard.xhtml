@@ -9,7 +9,7 @@
         <ui:include src="../sections/include_js_css.xhtml" />
     </h:head>
     <f:view>
-        <f:event type="preRenderView" listener="#{adminBean.checkLogIn}"/>
+        <f:event type="preRenderView" listener="#{adminBean_auth.checkLogIn}"/>
         <h:body>
             <div id="container">
                 <ui:insert name="top_bar">

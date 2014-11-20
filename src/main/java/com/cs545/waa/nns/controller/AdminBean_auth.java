@@ -13,7 +13,9 @@ import java.security.NoSuchAlgorithmException;
 import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.annotation.PostConstruct;
 import javax.ejb.EJB;
+import javax.ejb.TransactionAttribute;
 import javax.enterprise.context.SessionScoped;
 import javax.faces.application.ConfigurableNavigationHandler;
 import javax.faces.context.FacesContext;
@@ -29,8 +31,8 @@ import javax.inject.Named;
     public class AdminBean_auth implements Serializable {
     private Admin admin;    
     private String authStr="Log In";
-    
-    @EJB
+
+        @EJB
     private AdminFacadeLocal adminFacadeLocal;
 
     public String getAuthStr() {
@@ -40,10 +42,11 @@ import javax.inject.Named;
     public void setAuthStr(String authStr) {
         this.authStr = authStr;
     }
-        
-    public AdminBean_auth() {        
-        admin=new Admin();
-    }
+
+        public AdminBean_auth() {
+            admin = new Admin();
+        }
+
 
     public Admin getAdmin() {
         return admin;
@@ -114,5 +117,24 @@ import javax.inject.Named;
             authStr="Log In";
         }
         return "login";
-    }
+        }
+
+        @PostConstruct
+        @TransactionAttribute
+        public void init() {
+            if (adminFacadeLocal.findAll().isEmpty()) {
+                try {
+                    Admin admin1 = new Admin();
+                    admin1.setUsername("rupak");
+                    admin1.setEmail("namastenepal@gmail.com");
+                    admin1.setPassword(MD5encrypt.getCipher("admin123"));
+                    //   admin1.setAddress(new Address());
+                    adminFacadeLocal.create(admin1);
+                } catch (NoSuchAlgorithmException ex) {
+                    Logger.getLogger(AdminBean.class.getName()).log(Level.SEVERE, null, ex);
+                }
+
+            }
+
+        }
 }

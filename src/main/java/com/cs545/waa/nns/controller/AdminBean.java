@@ -139,6 +139,7 @@ public class AdminBean implements Serializable {
             productFacadeLocal.create(product);
             product = new Product("mobile", "This is samsung galaxy s4", 20, "s4", 5, true, catlist);
             productFacadeLocal.create(product);
+
         }
      
     }
