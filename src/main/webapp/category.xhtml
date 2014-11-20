@@ -3,12 +3,16 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html"
       xmlns:f="http://java.sun.com/jsf/core"
-      xmlns:ui="http://java.sun.com/jsf/facelets">
+      xmlns:ui="http://java.sun.com/jsf/facelets"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
     <h:body>
         <ui:composition template="/template/home_template.xhtml">
             <ui:define name="content">
 <div class="col-sm-9">
                 <div class="col-sm-12 center-column">
+                    
+                    <h1 id="title-page"></h1>
+                    
                     <h1 id="title-page">Desktops</h1>
                     <div class="category-info clearfix">
                         <div class="image">
@@ -18,6 +22,9 @@
                 </div>
                 <div class="product-grid" style="display: block;">
                         <div class="row">
+                            
+                            
+                            <c:forEach items="#{adminBean.getProductsByCategory(adminBean.activeCatId)}" var="product">
                             <div class="col-sm-3 col-xs-6">
 
                                 <!-- Product -->
@@ -26,89 +33,26 @@
 
                                         <div class="image ">
 
-                                            <a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=48">
-
-                                                <img src="http://localhost/outletdp/image/cache/data/demo/ipod_classic_1-80x80.jpg" alt="iPod Classic" />
-                                            </a>
+                                            <h:form>
+                                                <h:commandLink action="#{adminBean.gotoCategoryPage(product.id)}"  >
+                                                <img src="resources/uploads/img/product/#{product.image}" alt="#{product.name}" style="height: 200px; width: 150px;" />
+                                                </h:commandLink>
+                                                </h:form>
                                         </div>
                                     </div>
                                     <div class="right">
-                                        <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=48">iPod Classic</a></div>
+                                        <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=48"><h:outputText value="#{product.name}"/></a></div>
                                         <div class="price">
-                                            $100.00					</div>
+                                            $ #{product.price}					</div>
                                        
                                     </div>
                                 </div>		  	</div>
-                            <div class="col-sm-3 col-xs-6">
-
-                                <!-- Product -->
-                                <div class="product clearfix product-hover">
-                                    <div class="left">
-
-                                        <div class="image ">
-
-                                            <a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=47">
-
-                                                <img src="http://localhost/outletdp/image/cache/data/demo/hp_1-80x80.jpg" alt="HP LP3065"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=47">HP LP3065</a></div>
-                                        <div class="price">
-                                            $100.00					</div>
-                                        
-                                    </div>
-                                </div>		  	</div>
-                            <div class="col-sm-3 col-xs-6">
-
-                                <!-- Product -->
-                                <div class="product clearfix product-hover">
-                                    <div class="left">
-
-                                        <div class="image ">
-
-                                            <a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=46">
-
-                                                <img src="http://localhost/outletdp/image/cache/data/demo/sony_vaio_1-80x80.jpg" alt="Sony VAIO"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=46">Sony VAIO</a></div>
-                                        <div class="price">
-                                            $1,000.00					</div>
-                                       
-                                    </div>
-                                </div>		  	</div>
-                            <div class="col-sm-3 col-xs-6">
-
-                                <!-- Product -->
-                                <div class="product clearfix product-hover">
-                                    <div class="left">
-
-                                        <div class="image ">
-
-                                            <a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=44">
-
-                                                <img src="http://localhost/outletdp/image/cache/data/demo/macbook_air_1-80x80.jpg" alt="MacBook Air"/>
-                                            </a>
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=44">MacBook Air</a></div>
-                                        <div class="price">
-                                            $1,000.00					</div>
-                                    
-                                    </div>
-                                </div>		  	</div>
-                            <div class="col-sm-3 col-xs-6">
-                                <p>product list</p>
-                                <h:dataTable value="#{adminBean.getProductsByCategory(1)}" var="prod">
-                                    <h:column>#{prod.name}</h:column>
-                                    <h:column>#{prod.description}</h:column>
-                                </h:dataTable>
-                            </div>
+                            </c:forEach>
+                            
+                            
+                            
+                            
+                            
                         </div>
                         </div>
                     </div>

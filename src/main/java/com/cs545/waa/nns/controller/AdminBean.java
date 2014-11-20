@@ -30,6 +30,9 @@ public class AdminBean implements Serializable {
     private Category category;
     private Product product;
     private int activeCatId;
+    private int activeProductId;
+
+   
 
     @EJB
     private CategoryFacadeLocal categoryFacadeLocal;
@@ -196,6 +199,8 @@ public class AdminBean implements Serializable {
         category = categoryFacadeLocal.find(catId);
     }
 
+    
+    
     @TransactionAttribute
     public List<Product> getProductsByCategory(int catId) {
         System.out.println("inside get product list for category : " + catId);
@@ -204,14 +209,34 @@ public class AdminBean implements Serializable {
 
     public String gotoCategoryPage(int catId) {
         //getProductsByCategory(catId);
+       //getCategoryDetails(catId);
         setActiveCatId(catId);
         return "category";
+    }
+    @TransactionAttribute
+    public Product productDetails(long productId) {
+        return productFacadeLocal.find(productId);
+    }
+    public String gotoProductPage(int productId){
+        System.out.println(productId+"in go to product page");
+        setActiveProductId(productId);
+        return "product";
+    }
+    
+    public Category getCategoryDetails(int catId){
+        return categoryFacadeLocal.find(catId);
     }
 
     public int getActiveCatId() {
         return activeCatId;
     }
+    public int getActiveProductId() {
+        return activeProductId;
+    }
 
+    public void setActiveProductId(int activeProductId) {
+        this.activeProductId = activeProductId;
+    }
     public void setActiveCatId(int activeCatId) {
         this.activeCatId = activeCatId;
     }

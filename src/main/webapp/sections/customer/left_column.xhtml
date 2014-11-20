@@ -13,7 +13,7 @@
                     <h:form>
                         <ul class="accordion" id="accordion-category">
                             <c:forEach items="#{adminBean.categoryList}" var="category">
-                                <li><h:commandLink  value="#{category.name}" action="#{adminBean.getProductsByCategory(category.id)}"  /></li>
+                                <li><h:commandLink  value="#{category.name}" action="#{adminBean.gotoCategoryPage(category.id)}"  /></li>
                             </c:forEach> 
 
                         </ul>
