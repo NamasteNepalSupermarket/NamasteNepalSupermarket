@@ -6,15 +6,15 @@
       xmlns:ui="http://java.sun.com/jsf/facelets"
       xmlns:p="http://primefaces.org/ui">
     <h:body>
-       <ui:composition template="../template/admin_dashboard.xhtml">
+        <ui:composition template="../template/admin_dashboard.xhtml">
             <ui:define name="content">
                 <h1 >Manage Product</h1> 
                 <h:form enctype="multipart/form-data">
                     <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Product Name: </label>
                         <div class="col-sm-4">
-                            <h:inputText id="category_name" value="#{adminBean.product.name}"  class="form-control" />
-                            <h:message for="category_name" errorClass="alert alert-danger" />
+                            <h:inputText id="product_name" value="#{adminBean.product.name}"  class="form-control" />
+                            <h:message for="product_name" errorClass="alert alert-danger" />
                         </div>
                     </div>
                     <div style="clear:both; height: 5px;"></div>
@@ -24,12 +24,29 @@
                             <p:growl id="growl" showDetail="true" />
 
                             <p:inputTextarea style="width:80%;" completeMethod="#{adminBean.product.description}" queryDelay="750" minQueryLength="4" />
-                            <h:message for="category_description" errorClass="alert alert-danger" />
+                            <h:message for="product_description" errorClass="alert alert-danger" />
                         </div>
                     </div>
 
                     <div style="clear:both; height: 5px;"></div>
+                     
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Image: </label>
+                        <div class="col-sm-8">
+                            
+                            <h:panelGroup>
+                                <p:fileUpload id="product_image" value="#{adminBean.product.image}" update="msg" invalidFileMessage="Image file type is invalid" mode="simple"  allowTypes="/(\.|\/)(gif|jpe?g|png)$/" />
+                                <h:graphicImage library="uploads/img/category" name="#{adminBean.product.image}" width="20%" />     
+                            </h:panelGroup>
+                    
+                    </div>
+                    </div>
 
+                     
+                     
+                    <div style="clear:both; height: 5px;"></div>
+                    
+                    
                     <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Quantity: </label>
                         <div class="col-sm-4">
@@ -37,7 +54,7 @@
                             <h:message for="product_quantity" errorClass="alert alert-danger" />
                         </div>
                     </div>
-                    
+
                     <div style="clear:both; height: 5px;"></div>
 
                     <div class="form-group required">
@@ -47,7 +64,7 @@
                             <h:message for="product_price" errorClass="alert alert-danger" />
                         </div>
                     </div>
-                    
+
                     <div style="clear:both; height: 5px;"></div>
 
                     <div class="form-group required">
@@ -58,20 +75,29 @@
                         </div>
                     </div>
                     <div style="clear:both; height: 5px;"></div>
-
                     <div class="form-group required">
-                        <label class="col-sm-2 control-label" for="input-name1">Model: </label>
+                        <label class="col-sm-2 control-label" for="input-name1">Category: </label>
                         <div class="col-sm-4">
-                            
+                            <p:selectOneListbox id="parent_product" value="#{adminBean.product.categories}" style="height:100px"   filter="true" filterMatchMode="contains">
+                            <f:selectItems var="catgory" value="#{adminBean.categoryList}" itemLabel="#{catgory.name}"  itemValue="#{catgory.id}" />
+                            </p:selectOneListbox>
+                        </div>
+                    </div>
+                    
+                    <div style="clear:both; height: 5px;"></div>
+                    <div class="form-group required">
+                        <label class="col-sm-2 control-label" for="input-name1">Status: </label>
+                        <div class="col-sm-4">
+
                             <h:selectOneMenu id="subscriptions" value="#{adminBean.product.status}"  class="form-control">
-                               <f:selectItem id="item1" itemLabel="Disabled" itemValue="0" />
-                               <f:selectItem id="item2" itemLabel="Enabled" itemValue="1" />
-                           </h:selectOneMenu>
-                            
+                                <f:selectItem id="item1" itemLabel="Disabled" itemValue="0" />
+                                <f:selectItem id="item2" itemLabel="Enabled" itemValue="1" />
+                            </h:selectOneMenu>
+
                         </div>
                     </div>
                     <div style="clear:both; height: 5px;"></div>
-                    
+
                     <div class="form-group">
                         <label class="col-sm-2 control-label" for="input-name1"></label>
                         <div class="col-sm-10">
@@ -80,55 +106,12 @@
 
                         </div>
                     </div>
-                   
+
                 </h:form>
                 <hr style="height: 2px; color: #333;" />
-                 <h:outputText value="Product List" />
-                 
-                 
-                 
-                  <h:outputText value="Category List" />
-                    <!--TODO:wire proper list in table-->
-                    <div id="cat_list" class="table-responsive">
-                        <p:dataTable var="cat" value="#{adminBean.categoryList}" styleClass="table table-striped">
-                            <p:column headerText="Id">
-                                <h:outputText value="#{cat.id}" />
-                            </p:column>
+               
+                <h1><h:outputText value="Product List" /></h1>
 
-                            <p:column headerText="Name">
-                                <h:outputText value="#{cat.name}" />
-                            </p:column>
-
-                            <p:column headerText="Description">
-                                <h:outputText value="#{cat.description}" />
-                            </p:column>
-                            <!--TODO :correct following values-->
-                            <p:column headerText="Parent Category">
-                                <h:outputText value="#{cat.parentCategory.name}" />
-                            </p:column>
-                            <p:column headerText="Image">
-                                <h:graphicImage library="uploads/img/category" name="#{cat.image}" width="20%" />
-                            </p:column>
-                            <p:column headerText="Action">
-                                <div class="row">
-                                    <div style="padding-left: 20%;" class="pull-left">
-                                        <h:form>
-                                            <h:commandButton action="#{adminBean.editCategory(cat.id)}" class="btn btn-default  fa  fa-edit" value="Edit" immediate="true"/>
-                                        </h:form>
-                                    </div>
-                                    <div>
-                                        <h:form>
-                                            <h:commandButton action="#{adminBean.deleteCategory(cat.id)}" class="btn btn-default  fa  fa-edit" value="Delete" immediate="true"/>
-                                        </h:form>     
-                                    </div> 
-                                </div>
-                            </p:column>
-                        </p:dataTable>
-                    </div>   
-                 
-                 
-                 
-                 
                 <div class="table-responsive">
                     <p:dataTable var="product" value="#{adminBean.productList}" styleClass="table table-striped">
                         <p:column headerText="Id">
@@ -141,13 +124,27 @@
                         <p:column headerText="Quantity">
                             <h:outputText value="#{product.quantity}" />
                         </p:column>
-                        
+
                         <p:column headerText="Image">
                             <h:graphicImage library="uploads/img/category" name="#{product.image}" width="20%" />
                         </p:column>
+                        <p:column headerText="Action">
+                            <div class="row">
+                                <div style="padding-left: 20%;" class="pull-left">
+                                    <h:form>
+                                        <h:commandButton action="#{adminBean.editProduct(product.id)}" class="btn btn-default  fa  fa-edit" value="Edit" immediate="true"/>
+                                    </h:form>
+                                </div>
+                                <div>
+                                    <h:form>
+                                        <h:commandButton action="#{adminBean.deleteProduct(product.id)}" class="btn btn-default  fa  fa-edit" value="Delete" immediate="true"/>
+                                    </h:form>     
+                                </div> 
+                            </div>
+                        </p:column>
                     </p:dataTable>
                 </div>
-               
+
             </ui:define>
         </ui:composition>
     </h:body>
