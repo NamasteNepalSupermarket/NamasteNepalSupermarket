@@ -37,7 +37,7 @@ public class ProductFacade extends AbstractFacade<Product> implements ProductFac
     }
 
     @Override
-    public List<Product> findProductsByCategory(int id) {
+    public List<Product> findProductsByCategory(long id) {
         System.out.println("inside findProductsByCategory ");
         CriteriaBuilder criteriaBuilder = em.getCriteriaBuilder();
         CriteriaQuery<Product> criteriaQuery = criteriaBuilder.createQuery(Product.class);

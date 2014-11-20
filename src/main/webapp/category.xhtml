@@ -8,54 +8,54 @@
     <h:body>
         <ui:composition template="/template/home_template.xhtml">
             <ui:define name="content">
-<div class="col-sm-9">
-                <div class="col-sm-12 center-column">
-                    
-                    <h1 id="title-page"></h1>
-                    
-                    <h1 id="title-page">Desktops</h1>
-                    <div class="category-info clearfix">
-                        <div class="image">
-                            <img src="http://localhost/outletdp/image/cache/data/demo/compaq_presario-80x80.jpg" alt="Desktops" />
+                <div class="col-sm-9">
+                    <div class="col-sm-12 center-column">
+
+                        <h1 id="title-page">#{adminBean.category.name}</h1>
+
+                        <h1 id="title-page">Desktops</h1>
+                        <div class="category-info clearfix">
+                            <div class="image">
+                                <img src="http://localhost/outletdp/image/cache/data/demo/compaq_presario-80x80.jpg" alt="Desktops" />
+                            </div>
+                        </div>
+                    </div>
+                    <div class="product-grid" style="display: block;">
+                        <div class="row">
+
+
+                            <c:forEach items="#{adminBean.getProductsByCategory(adminBean.category.id)}" var="prod">
+                                <div class="col-sm-3 col-xs-6">
+
+                                    <!-- Product -->
+                                    <div class="product clearfix product-hover">
+                                        <div class="left">
+
+                                            <div class="image ">
+
+                                                <h:form>
+                                                    <h:commandLink action="#{adminBean.gotoProductPage(prod.id)}"  >
+                                                                   <h:graphicImage library="uploads/img/product/" name="#{adminBean.category.image}"/>               
+                                                    </h:commandLink>
+                                                </h:form>
+                                            </div>
+                                        </div>
+                                        <div class="right">
+                                            <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=48"><h:outputText value="#{product.name}"/></a></div>
+                                            <div class="price">
+                                                $ #{prod.price}					</div>
+
+                                        </div>
+                                    </div>		  	</div>
+                            </c:forEach>
+
+
+
+
+
                         </div>
                     </div>
                 </div>
-                <div class="product-grid" style="display: block;">
-                        <div class="row">
-                            
-                            
-                            <c:forEach items="#{adminBean.getProductsByCategory(adminBean.activeCatId)}" var="product">
-                            <div class="col-sm-3 col-xs-6">
-
-                                <!-- Product -->
-                                <div class="product clearfix product-hover">
-                                    <div class="left">
-
-                                        <div class="image ">
-
-                                            <h:form>
-                                                <h:commandLink action="#{adminBean.gotoCategoryPage(product.id)}"  >
-                                                <img src="resources/uploads/img/product/#{product.image}" alt="#{product.name}" style="height: 200px; width: 150px;" />
-                                                </h:commandLink>
-                                                </h:form>
-                                        </div>
-                                    </div>
-                                    <div class="right">
-                                        <div class="name"><a href="http://localhost/outletdp/index.php?route=product/product&amp;path=20&amp;product_id=48"><h:outputText value="#{product.name}"/></a></div>
-                                        <div class="price">
-                                            $ #{product.price}					</div>
-                                       
-                                    </div>
-                                </div>		  	</div>
-                            </c:forEach>
-                            
-                            
-                            
-                            
-                            
-                        </div>
-                        </div>
-                    </div>
             </ui:define>
         </ui:composition>
     </h:body>

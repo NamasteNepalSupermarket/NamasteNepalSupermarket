@@ -29,10 +29,8 @@ public class AdminBean implements Serializable {
 
     private Category category;
     private Product product;
-    private int activeCatId;
-    private int activeProductId;
-
-   
+   // private int activeCatId;
+    //private int activeProductId;
 
     @EJB
     private CategoryFacadeLocal categoryFacadeLocal;
@@ -124,7 +122,7 @@ public class AdminBean implements Serializable {
         if (product.getId() == null) {
             product.setImage(product.getImage_file().getFileName());
             productFacadeLocal.create(product);
-            Utility.saveImageFile("product",product.getImage_file());
+            Utility.saveImageFile("product", product.getImage_file());
         }
         /*
          product.setImage(product.getImage_file().getFileName());
@@ -132,8 +130,7 @@ public class AdminBean implements Serializable {
          category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
          }
          */
-      
-        
+
     }
 
     @PostConstruct
@@ -206,40 +203,56 @@ public class AdminBean implements Serializable {
         return productFacadeLocal.findProductsByCategory(catId);
     }
 
-    public String gotoCategoryPage(int catId) {
+    public void editCategory(long catId) {
+        System.out.println("inside delete Category : " + catId);
+        category = categoryFacadeLocal.find(catId);
+    }
+
+    @TransactionAttribute
+    public List<Product> getProductsByCategory(long catId) {
+        System.out.println("inside get product list for category : " + catId);
+        return productFacadeLocal.findProductsByCategory(catId);
+    }
+
+    @TransactionAttribute
+    public String gotoCategoryPage(long catId) {
         //getProductsByCategory(catId);
-       //getCategoryDetails(catId);
-        setActiveCatId(catId);
+        //categoryDetails(catId);
+        category = categoryFacadeLocal.find(catId);
+        //setActiveCatId(catId);
         return "category";
     }
+
     @TransactionAttribute
     public Product productDetails(long productId) {
         return productFacadeLocal.find(productId);
     }
-    public String gotoProductPage(int productId){
-        System.out.println(productId+"in go to product page");
-        setActiveProductId(productId);
+
+    @TransactionAttribute
+    public String gotoProductPage(long productId) {
+        System.out.println(productId + "in go to product page");
+        product = productFacadeLocal.find(productId);
+        //setActiveProductId(productId);
         return "product";
     }
-    
-    public Category getCategoryDetails(int catId){
+
+    public Category categoryDetails(int catId) {
         return categoryFacadeLocal.find(catId);
     }
 
-    public int getActiveCatId() {
-        return activeCatId;
-    }
-    public int getActiveProductId() {
-        return activeProductId;
-    }
-
-    public void setActiveProductId(int activeProductId) {
-        this.activeProductId = activeProductId;
-    }
-    public void setActiveCatId(int activeCatId) {
-        this.activeCatId = activeCatId;
-    }
-
+//    public int getActiveCatId() {
+//        return activeCatId;
+//    }
+//    public int getActiveProductId() {
+//        return activeProductId;
+//    }
+//
+//    public void setActiveProductId(int activeProductId) {
+//        this.activeProductId = activeProductId;
+//    }
+//    public void setActiveCatId(int activeCatId) {
+//        this.activeCatId = activeCatId;
+//    }
     @TransactionAttribute
     public void deleteProduct(long prodId) {
         System.out.println("inside delete Product : " + prodId);
@@ -251,6 +264,5 @@ public class AdminBean implements Serializable {
         System.out.println("inside delete Product : " + prodId);
         product = productFacadeLocal.find(prodId);
     }
-
 
 }
