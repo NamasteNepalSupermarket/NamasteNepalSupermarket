@@ -109,7 +109,7 @@ public class AdminBean implements Serializable {
                 category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
             }
             categoryFacadeLocal.create(category);
-            Utility.saveImageFile(category);
+            Utility.saveImageFile("category", category.getImage_file());
 
         } else {
             //edit operation
@@ -119,14 +119,21 @@ public class AdminBean implements Serializable {
 
     @TransactionAttribute
     public void saveProduct() {
+        System.out.println("inside save product :: " + product.toString());
+        System.out.println("filename :" + product.getImage_file().getFileName() + " file type : " + product.getImage_file().getContentType() + " size : " + product.getImage_file().getSize());
+        if (product.getId() == null) {
+            product.setImage(product.getImage_file().getFileName());
+            productFacadeLocal.create(product);
+            Utility.saveImageFile("product",product.getImage_file());
+        }
         /*
          product.setImage(product.getImage_file().getFileName());
          if (category.getParent_category_id() != null) {
          category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
          }
          */
-        productFacadeLocal.create(product);
-        //Utility.saveImageFile(category);
+      
+        
     }
 
     @PostConstruct
@@ -240,5 +247,18 @@ public class AdminBean implements Serializable {
     public void setActiveCatId(int activeCatId) {
         this.activeCatId = activeCatId;
     }
+
+    @TransactionAttribute
+    public void deleteProduct(long prodId) {
+        System.out.println("inside delete Product : " + prodId);
+        productFacadeLocal.remove(productFacadeLocal.find(prodId));
+    }
+
+    @TransactionAttribute
+    public void editProduct(long prodId) {
+        System.out.println("inside delete Product : " + prodId);
+        product = productFacadeLocal.find(prodId);
+    }
+
 
 }
