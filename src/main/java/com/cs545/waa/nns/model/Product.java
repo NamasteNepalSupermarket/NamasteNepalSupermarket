@@ -14,6 +14,8 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToMany;
 import javax.persistence.ManyToOne;
+import javax.persistence.Transient;
+import org.primefaces.model.UploadedFile;
 
 /**
  *
@@ -31,6 +33,8 @@ public class Product implements Serializable{
     private String model;
     private long quantity;
     private boolean status;
+    @Transient
+    private UploadedFile image_file;
     
     @ManyToOne
     private Request refRequest;
@@ -127,5 +131,18 @@ public class Product implements Serializable{
     public void setCategories(List<Category> categories) {
         this.categories = categories;
     }
-         
+
+    public UploadedFile getImage_file() {
+        return image_file;
+    }
+
+    public void setImage_file(UploadedFile image_file) {
+        this.image_file = image_file;
+    }
+
+    @Override
+    public String toString() {
+        return "com.cs545.waa.namastenepalsupermarket.model.Product[ id=" + id + ", name=" + name + ",description=" + description + ",quantity=" + quantity + ", model=" + model + " ]";
+    }
+
 }

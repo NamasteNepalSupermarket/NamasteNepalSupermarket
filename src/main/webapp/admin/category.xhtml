@@ -67,7 +67,7 @@
                                     </div>
                                     <div>
                                         <h:form>
-                                            <h:commandButton action="#{adminBean.deleteCategory(cat.id)}" class="btn btn-default  fa  fa-edit" value="Delete" immediate="true"/>
+                                            <h:commandButton actionListener="#{adminBean.deleteCategory(cat.id)}" class="btn btn-default  fa  fa-edit" value="Delete" immediate="true"/>
                                         </h:form>     
                                     </div> 
                                 </div>
