@@ -26,13 +26,14 @@ import javax.inject.Named;
  *
  * @author Bishal Timilsina
  */
-    @Named
-    @SessionScoped
-    public class AdminBean_auth implements Serializable {
-    private Admin admin;    
-    private String authStr="Log In";
+@Named
+@SessionScoped
+public class AdminBean_auth implements Serializable {
 
-        @EJB
+    private Admin admin;
+    private String authStr = "Log In";
+
+    @EJB
     private AdminFacadeLocal adminFacadeLocal;
 
     public String getAuthStr() {
@@ -43,10 +44,9 @@ import javax.inject.Named;
         this.authStr = authStr;
     }
 
-        public AdminBean_auth() {
-            admin = new Admin();
-        }
-
+    public AdminBean_auth() {
+        admin = new Admin();
+    }
 
     public Admin getAdmin() {
         return admin;
@@ -63,69 +63,70 @@ import javax.inject.Named;
     public void setAdminFacadeLocal(AdminFacadeLocal adminFacadeLocal) {
         this.adminFacadeLocal = adminFacadeLocal;
     }
-             
-    public List<Admin> getAdminList(){
+
+    public List<Admin> getAdminList() {
         return adminFacadeLocal.findAll();
     }
-    
-    public void checkLogIn(ComponentSystemEvent event) {     
-     if(isInvalid()){
-        FacesContext context = FacesContext.getCurrentInstance();
-        ConfigurableNavigationHandler handler = (ConfigurableNavigationHandler) context.getApplication().getNavigationHandler();
-        handler.performNavigation("login");
-     }
-    } 
 
-    public String showInxPage(){
-        String nextPage="index";
-        if(isInvalid())
-            nextPage="login";
+    public void checkLogIn(ComponentSystemEvent event) {
+        if (isInvalid()) {
+            FacesContext context = FacesContext.getCurrentInstance();
+            ConfigurableNavigationHandler handler = (ConfigurableNavigationHandler) context.getApplication().getNavigationHandler();
+            handler.performNavigation("login");
+        }
+    }
+
+    public String showInxPage() {
+        String nextPage = "index";
+        if (isInvalid()) {
+            nextPage = "login";
+        }
         return nextPage;
     }
 
-    private boolean isInvalid(){                        
-        boolean invalid=true;
-        if(admin.getUsername()!=null && admin.getPassword()!=null){
-            for(Admin a:getAdminList()){
-                try {                    
-                    if(admin.getUsername().equals(a.getUsername()) && MD5encrypt.getCipher(admin.getPassword()).equals(a.getPassword())){
-                        authStr="Log Out";
-                        invalid=false;
-                        break;                
+    private boolean isInvalid() {
+        boolean invalid = true;
+        if (admin.getUsername() != null && admin.getPassword() != null) {
+            for (Admin a : getAdminList()) {
+                try {
+                    if (admin.getUsername().equals(a.getUsername()) && MD5encrypt.getCipher(admin.getPassword()).equals(a.getPassword())) {
+                        authStr = "Log Out";
+                        invalid = false;
+                        break;
                     }
                 } catch (NoSuchAlgorithmException ex) {
                     Logger.getLogger(com.cs545.waa.nns.controller.AdminBean_auth.class.getName()).log(Level.SEVERE, null, ex);
                 }
             }
-        }        
+        }
         return invalid;
     }
-    
-    public String flush(){
-        if(authStr.equals("Log Out")){
+
+    public String flush() {
+        if (authStr.equals("Log Out")) {
             admin.setUsername("");
             admin.setPassword("");
-            authStr="Log In";
+            authStr = "Log In";
         }
         return "login";
-        }
+    }
 
-        @PostConstruct
-        @TransactionAttribute
-        public void init() {
-            if (adminFacadeLocal.findAll().isEmpty()) {
-                try {
-                    Admin admin1 = new Admin();
-                    admin1.setUsername("rupak");
-                    admin1.setEmail("namastenepal@gmail.com");
-                    admin1.setPassword(MD5encrypt.getCipher("admin123"));
-                    //   admin1.setAddress(new Address());
-                    adminFacadeLocal.create(admin1);
-                } catch (NoSuchAlgorithmException ex) {
-                    Logger.getLogger(AdminBean.class.getName()).log(Level.SEVERE, null, ex);
-                }
-
+    @PostConstruct
+    @TransactionAttribute
+    public void init() {
+        if (adminFacadeLocal.findAll().isEmpty()) {
+            try {
+                Admin admin1 = new Admin();
+                admin1.setUsername("rupak");
+                admin1.setEmail("namastenepal@gmail.com");
+                admin1.setPassword(MD5encrypt.getCipher("admin123"));
+                //   admin1.setAddress(new Address());
+                adminFacadeLocal.create(admin1);
+            } catch (NoSuchAlgorithmException ex) {
+                Logger.getLogger(AdminBean.class.getName()).log(Level.SEVERE, null, ex);
             }
 
         }
+
+    }
 }

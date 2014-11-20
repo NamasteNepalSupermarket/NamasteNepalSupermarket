@@ -14,7 +14,7 @@
                     <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Full Name: </label>
                         <div class="col-sm-4">
-                            <h:inputText id="user_fullname" value="#{adminBean.person.fullname}"  class="form-control" />
+                            <h:inputText id="user_fullname" value="#{adminBean_auth.admin.fullname}"  class="form-control" />
                             <h:message for="user_fullname" errorClass="alert alert-danger" />
                         </div>
                     </div>
@@ -22,7 +22,7 @@
                     <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Username: </label>
                         <div class="col-sm-8">
-                            <h:inputText id="user_username" value="#{adminBean.person.username}"  class="form-control" />
+                            <h:inputText id="user_username" value="#{adminBean_auth.admin.username}"  class="form-control" />
                             <h:message for="user_username" errorClass="alert alert-danger" />
                         </div>
                     </div>
@@ -48,7 +48,7 @@
                     <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Email: </label>
                         <div class="col-sm-8">
-                            <h:inputText id="user_email" value="#{adminBean.user.email}"  class="form-control" />
+                            <h:inputText id="user_email" value="#{adminBean_auth.admin.email}"  class="form-control" />
                             <h:message for="user_email" errorClass="alert alert-danger" />
                         </div>
                     </div>
@@ -57,7 +57,7 @@
                      <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Address: </label>
                         <div class="col-sm-8">
-                            <h:inputText id="user_address" value="#{adminBean.person.address}"  class="form-control" />
+                            <h:inputText id="user_address" value="#{adminBean_auth.admin.address}"  class="form-control" />
                             <h:message for="user_address" errorClass="alert alert-danger" />
                         </div>
                     </div>
@@ -67,7 +67,7 @@
                         <label class="col-sm-2 control-label" for="input-name1"></label>
                         <div class="col-sm-10">
 
-                            <h:commandLink styleClass="btn btn-primary" value="Create" action="#{adminBean.saveProduct()}" />
+                            <h:commandLink styleClass="btn btn-primary" value="Edit"  />
 
                         </div>
                     </div>
