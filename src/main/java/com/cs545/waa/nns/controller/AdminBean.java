@@ -31,13 +31,11 @@ public class AdminBean implements Serializable {
     private Product product;
     private int activeCatId;
 
-    
     @EJB
     private CategoryFacadeLocal categoryFacadeLocal;
 
     @EJB
     private ProductFacadeLocal productFacadeLocal;
-
 
     public AdminBean() {
         category = new Category();
@@ -67,7 +65,7 @@ public class AdminBean implements Serializable {
     public void setCategoryFacadeLocal(CategoryFacadeLocal categoryFacadeLocal) {
         this.categoryFacadeLocal = categoryFacadeLocal;
     }
-    
+
     public ProductFacadeLocal getProductFacadeLocal() {
         return productFacadeLocal;
     }
@@ -84,17 +82,17 @@ public class AdminBean implements Serializable {
     public List<Product> getProductList() {
         return productFacadeLocal.findAll();
     }
-    
+
     public List<Product> getOnlyFourProductList() {
-        int[] range=new int[]{0,4};
+        int[] range = new int[]{0, 4};
         return productFacadeLocal.findRange(range);
     }
-    
+
     public List<Category> getOnlyFourCategoryList() {
-        int[] range=new int[]{0,7};
+        int[] range = new int[]{0, 7};
         return categoryFacadeLocal.findRange(range);
     }
-    
+
     @TransactionAttribute
     public String saveCategory() {
         System.out.println("inside saveCategory method");
@@ -109,21 +107,21 @@ public class AdminBean implements Serializable {
             }
             categoryFacadeLocal.create(category);
             Utility.saveImageFile(category);
-          
+
         } else {
             //edit operation
         }
         return "category";
     }
-    
+
     @TransactionAttribute
     public void saveProduct() {
         /*
-        product.setImage(product.getImage_file().getFileName());
-        if (category.getParent_category_id() != null) {
-            category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
-        }
-        */
+         product.setImage(product.getImage_file().getFileName());
+         if (category.getParent_category_id() != null) {
+         category.setParentCategory(categoryFacadeLocal.find(category.getParent_category_id()));
+         }
+         */
         productFacadeLocal.create(product);
         //Utility.saveImageFile(category);
     }
@@ -134,27 +132,32 @@ public class AdminBean implements Serializable {
         if (categoryFacadeLocal.findAll().isEmpty()) {
             Category cat1 = new Category("This is item1 description", "desktop.jpg", "Desktop");
             Category cat2 = new Category("This is item2 description", "mobile.jpg", "Mobile");
-            Category cat3 = new Category("This is item2 description", "mobile.jpg", "Laptops");
-            Category cat4 = new Category("This is item2 description", "mobile.jpg", "PC");
-            Category cat5 = new Category("This is item2 description", "mobile.jpg", "Macs");
-            Category cat6 = new Category("This is item2 description", "mobile.jpg", "Windows");
-            Category cat7 = new Category("This is item2 description", "mobile.jpg", "Tablets");
-            //   categoryFacadeLocal.create(cat1);
-            //  categoryFacadeLocal.create(cat2);
-            
-             List<Category> catlist1 = new ArrayList<>();
+            Category cat3 = new Category("This is item2 description", "laptops.jpg", "Laptops");
+            Category cat4 = new Category("This is item2 description", "pc.jpg", "PC");
+            Category cat5 = new Category("This is item2 description", "macs.jpg", "Macs");
+            Category cat6 = new Category("This is item2 description", "windows.jpg", "Windows");
+            Category cat7 = new Category("This is item2 description", "tablets.jpg", "Tablets");
+            categoryFacadeLocal.create(cat1);
+            categoryFacadeLocal.create(cat2);
+            categoryFacadeLocal.create(cat3);
+            categoryFacadeLocal.create(cat4);
+            categoryFacadeLocal.create(cat5);
+            categoryFacadeLocal.create(cat6);
+            categoryFacadeLocal.create(cat7);
+
+            List<Category> catlist1 = new ArrayList<>();
             catlist1.add(cat1);
             catlist1.add(cat2);
-             List<Category> catlist2 = new ArrayList<>();
+            List<Category> catlist2 = new ArrayList<>();
             catlist2.add(cat3);
             catlist2.add(cat2);
-             List<Category> catlist3 = new ArrayList<>();
+            List<Category> catlist3 = new ArrayList<>();
             catlist3.add(cat4);
             catlist3.add(cat1);
-             List<Category> catlist4 = new ArrayList<>();
+            List<Category> catlist4 = new ArrayList<>();
             catlist4.add(cat5);
             catlist4.add(cat4);
-             List<Category> catlist5 = new ArrayList<>();
+            List<Category> catlist5 = new ArrayList<>();
             catlist5.add(cat6);
             catlist5.add(cat7);
             List<Category> catlist6 = new ArrayList<>();
@@ -164,11 +167,11 @@ public class AdminBean implements Serializable {
             catlist7.add(cat1);
             catlist7.add(cat2);
             Product product1 = new Product("Apple", "This is Apple description", "apple_logo.jpg", 100, "s5", 20, true, catlist1);
-            Product product2 = new Product("Canon EOS", "This is Canon EOS", "canon_eos_5d_1.jpg",100, "s5", 20, true, catlist2);
-            Product product3 = new Product("HTC Touch HD", "This is samsung galaxy s", "htc_touch_hd_1.jpg",100, "s5", 20, true, catlist3);
-            Product product4 = new Product("Iphone 6", "This is samsung galaxy s", "iphone_6.jpg",100, "s5", 20, true, catlist4);
-            Product product5 = new Product("Ipod Classic", "This is samsung galaxy s", "ipod_classic_2.jpg",100, "s5", 20, true, catlist5);
-            Product product6 = new Product("Mac Book", "This is samsung galaxy s", "macbook_2.jpg",100, "s5", 20, true, catlist6);
+            Product product2 = new Product("Canon EOS", "This is Canon EOS", "canon_eos_5d_1.jpg", 100, "s5", 20, true, catlist2);
+            Product product3 = new Product("HTC Touch HD", "This is samsung galaxy s", "htc_touch_hd_1.jpg", 100, "s5", 20, true, catlist3);
+            Product product4 = new Product("Iphone 6", "This is samsung galaxy s", "iphone_6.jpg", 100, "s5", 20, true, catlist4);
+            Product product5 = new Product("Ipod Classic", "This is samsung galaxy s", "ipod_classic_2.jpg", 100, "s5", 20, true, catlist5);
+            Product product6 = new Product("Mac Book", "This is samsung galaxy s", "macbook_2.jpg", 100, "s5", 20, true, catlist6);
             Product product7 = new Product("Mac Book Pro", "This is samsung galaxy s", "macbook_pro_4.jpg", 100, "s5", 20, true, catlist7);
             productFacadeLocal.create(product1);
             productFacadeLocal.create(product2);
@@ -177,13 +180,8 @@ public class AdminBean implements Serializable {
             productFacadeLocal.create(product5);
             productFacadeLocal.create(product6);
             productFacadeLocal.create(product7);
-          //  catlist.clear();
-            // catlist = categoryFacadeLocal.findAll();
-            //product1 = new Product("mobile", "This is samsung galaxy s4", 20, "s4", 5, true, catlist);
-            //productFacadeLocal.create(product1);
-
         }
-     
+
     }
 
     @TransactionAttribute
@@ -203,12 +201,13 @@ public class AdminBean implements Serializable {
         System.out.println("inside get product list for category : " + catId);
         return productFacadeLocal.findProductsByCategory(catId);
     }
-    
+
     public String gotoCategoryPage(int catId) {
         //getProductsByCategory(catId);
         setActiveCatId(catId);
         return "category";
     }
+
     public int getActiveCatId() {
         return activeCatId;
     }
@@ -216,7 +215,5 @@ public class AdminBean implements Serializable {
     public void setActiveCatId(int activeCatId) {
         this.activeCatId = activeCatId;
     }
-    
-    
 
 }

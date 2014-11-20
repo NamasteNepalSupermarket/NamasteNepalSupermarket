@@ -34,9 +34,9 @@ public class Category implements Serializable {
     private UploadedFile image_file;
     @Transient
     private Long parent_category_id;
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne
     private Category parentCategory;
-    @ManyToMany(mappedBy = "categories")
+    @ManyToMany(mappedBy = "categories", cascade = CascadeType.REMOVE)
     private List<Product> products;
     public Category() {
         products=new ArrayList<>();

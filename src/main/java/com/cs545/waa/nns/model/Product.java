@@ -34,7 +34,7 @@ public class Product implements Serializable{
     
     @ManyToOne
     private Request refRequest;
-    @ManyToMany(cascade = CascadeType.PERSIST)
+    @ManyToMany(cascade = CascadeType.REMOVE)
     private List<Category> categories;
 
     public Product() {
