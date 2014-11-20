@@ -223,4 +223,17 @@ public class AdminBean implements Serializable {
         this.activeCatId = activeCatId;
     }
 
+    @TransactionAttribute
+    public void deleteProduct(long prodId) {
+        System.out.println("inside delete Product : " + prodId);
+        productFacadeLocal.remove(productFacadeLocal.find(prodId));
+    }
+
+    @TransactionAttribute
+    public void editProduct(long prodId) {
+        System.out.println("inside delete Product : " + prodId);
+        product = productFacadeLocal.find(prodId);
+    }
+
+
 }

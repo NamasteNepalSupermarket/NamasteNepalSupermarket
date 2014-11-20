@@ -21,7 +21,7 @@
                     <div class="form-group required">
                         <label class="col-sm-2 control-label" for="input-name1">Description: </label>
                         <div class="col-sm-8">
-                            <p:inputTextarea style="width:80%;" completeMethod="#{adminBean.product.description}" queryDelay="750" minQueryLength="4" />
+                            <p:inputTextarea style="width:80%;" value="#{adminBean.product.description}" queryDelay="750" minQueryLength="4" />
                             <h:message for="product_description" errorClass="alert alert-danger" />
                         </div>
                     </div>
